@@ -10,7 +10,7 @@ variable "firefly_secret_key" {
 
 variable "name" {
   type        = string
-  description = "Name of the GCP integration"
+  description = "Name of the AWS integration"
 }
 
 variable "firefly_endpoint" {
