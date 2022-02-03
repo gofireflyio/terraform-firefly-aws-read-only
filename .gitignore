@@ -1,0 +1,8 @@
+
+.terraform
+.idea
+test
+*.json
+*.tfstate**
+.terraform.lock.hcl
+*.tfvars**
