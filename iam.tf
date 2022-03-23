@@ -191,8 +191,13 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
     ]
   })
   managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
-                         "arn:aws:iam::aws:policy/ReadOnlyAccess",
-                         aws_iam_policy.firefly_readonly_policy_deny_list.arn,
-                         aws_iam_policy.firefly_s3_specific_write_permission.arn]
+                         "arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess",
+                         aws_iam_policy.firefly_readonly_policy.arn,
+                         aws_iam_policy.firefly_readonly_policy_part1.arn,
+                         aws_iam_policy.firefly_readonly_policy_part2.arn,
+                         aws_iam_policy.firefly_readonly_policy_part3.arn,
+                         aws_iam_policy.firefly_readonly_policy_part4.arn,
+                         aws_iam_policy.firefly_readonly_policy_part5.arn
+                         ]
 
 }
