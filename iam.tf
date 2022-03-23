@@ -63,7 +63,7 @@ resource "aws_iam_policy" "firefly_readonly_policy" {
 }
 
 resource "aws_iam_role" "firefly_cross_account_access_role" {
-  name = "firefly-caa-role"
+  name = var.role_name
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -83,6 +83,12 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
   })
   managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
                          "arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess",
-                         aws_iam_policy.firefly_readonly_policy.arn]
+                         aws_iam_policy.firefly_readonly_policy.arn,
+                         aws_iam_policy.firefly_readonly_policy_part1.arn,
+                         aws_iam_policy.firefly_readonly_policy_part2.arn,
+                         aws_iam_policy.firefly_readonly_policy_part3.arn,
+                         aws_iam_policy.firefly_readonly_policy_part4.arn,
+                         aws_iam_policy.firefly_readonly_policy_part5.arn
+                         ]
 
 }

@@ -30,3 +30,9 @@ variable full_scan_enabled {
   default     = true
   description = "Full scan enabled?"
 }
+
+variable role_name {
+  type        = string
+  default     = "firefly-caa-role"
+  description = "Role Name"
+}
