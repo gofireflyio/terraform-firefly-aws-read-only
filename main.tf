@@ -16,7 +16,7 @@ output "response_code" {
 }
 
 resource "time_sleep" "wait_10_seconds" {
-  depends_on = [aws_iam_policy.firefly_readonly_policy, aws_iam_role.firefly_cross_account_access_role]
+  depends_on = [aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_write_permission, aws_iam_role.firefly_cross_account_access_role]
 
   create_duration = "10s"
 }
@@ -31,10 +31,10 @@ resource "null_resource" "firefly_create_integration" {
 curl --request POST "${var.firefly_endpoint}/integrations/aws/" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${jsondecode(data.httpclient_request.req.response_body).access_token}" \
-    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "${random_string.external_id.result}", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
+    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "NOT_CONFIGURED", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
 
 CURL
   }
 
-  depends_on = [aws_iam_policy.firefly_readonly_policy, aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds]
+  depends_on = [aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_write_permission, aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds]
 }
