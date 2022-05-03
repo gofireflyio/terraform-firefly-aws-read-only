@@ -61,7 +61,9 @@ resource "aws_iam_policy" "firefly_readonly_policy_part7" {
           "xray:GetEncryptionConfig",
           "xray:GetGroup",
           "xray:GetSamplingRules",
-          "xray:List*"
+          "xray:List*",
+          "cloudwatch:ListMetricStreams",
+          "cloudwatch:ListDashboards"
         ],
         "Effect" : "Allow",
         "Resource" : "*"
