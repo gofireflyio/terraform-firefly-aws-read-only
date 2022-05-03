@@ -77,7 +77,6 @@ resource "aws_iam_policy" "firefly_readonly_policy_part2" {
           "dynamodb:DescribeTable",
           "dynamodb:DescribeTableReplicaAutoScaling",
           "dynamodb:DescribeTimeToLive",
-          "dynamodb:GetItem",
           "dynamodb:ListBackups",
           "dynamodb:ListContributorInsights",
           "dynamodb:ListExports",
