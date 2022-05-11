@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
-  name        = "S3SpecificWritePermission"
+  name        = "S3SpecificReadPermission"
   path        = "/"
   description = "Read only permission for the Specific S3 Buckets"
 
