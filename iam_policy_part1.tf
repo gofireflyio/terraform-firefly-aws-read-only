@@ -22,6 +22,7 @@ resource "aws_iam_policy" "firefly_readonly_policy_part1" {
           "amplify:GetDomainAssociation",
           "amplify:GetWebHook",
           "amplify:List*",
+          "apigateway:GET",
           "app-integrations:List*",
           "appconfig:GetApplication",
           "appconfig:GetConfigurationProfile",
