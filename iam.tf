@@ -146,7 +146,7 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
   })
 }
 
-resource "aws_iam_policy" "firefly_s3_specific_write_permission" {
+resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
   name        = "S3SpecificWritePermission"
   path        = "/"
   description = "Read only permission for the Specific S3 Buckets"
@@ -200,7 +200,7 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
     aws_iam_policy.firefly_readonly_policy_part5.arn,
     aws_iam_policy.firefly_readonly_policy_part6.arn,
     aws_iam_policy.firefly_readonly_policy_part7.arn,
-    aws_iam_policy.firefly_s3_specific_write_permission.arn
+    aws_iam_policy.firefly_s3_specific_read_permission.arn
   ]
 
 }
