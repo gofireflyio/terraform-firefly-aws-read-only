@@ -1,40 +1,146 @@
-data "httpclient_request" "req" {
-  url = "${var.firefly_endpoint}/account/access_keys/login"
-  request_headers = {
-    Content-Type: "application/json",
+module "firefly_aws_integration" {
+  source = "./modules/firefly_aws_integration"
+  firefly_secret_key = var.firefly_secret_key
+  firefly_access_key = var.firefly_access_key
+  name = var.name
+  firefly_endpoint = var.firefly_endpoint
+  event_driven = var.is_event_driven
+  providers          = {
+    aws = aws.us_east_1
   }
-  request_method = "POST"
-  request_body = jsonencode({ "accessKey"=var.firefly_access_key,  "secretKey"=var.firefly_secret_key })
 }
 
-output "token" {
-  value = jsondecode(data.httpclient_request.req.response_body).access_token
+provider "aws" {
+  alias      = "us_east_1"
+  region     = "us-east-1"
+}
+provider "aws" {
+  alias      = "us_west_2"
+  region     = "us-west-2"
+}
+provider "aws" {
+  alias      = "us_east_2"
+  region     = "us-east-2"
+}
+provider "aws" {
+  alias      = "us_west_1"
+  region     = "us-west-1"
+}
+provider "aws" {
+  alias      = "ap_northeast_3"
+  region     = "ap-northeast-3"
+}
+provider "aws" {
+  alias      = "ap_northeast_2"
+  region     = "ap-northeast-2"
+}
+provider "aws" {
+  alias      = "ap_southeast_1"
+  region     = "ap-southeast-1"
+}
+provider "aws" {
+  alias      = "ap_southeast_2"
+  region     = "ap-southeast-2"
+}
+provider "aws" {
+  alias      = "ap_northeast_1"
+  region     = "ap_northeast_1"
 }
 
-output "response_code" {
-  value = data.httpclient_request.req.response_code
-}
-
-resource "time_sleep" "wait_10_seconds" {
-  depends_on = [aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_write_permission, aws_iam_role.firefly_cross_account_access_role]
-
-  create_duration = "10s"
-}
-
-resource "null_resource" "firefly_create_integration" {
-  triggers = {
-    version = local.version
+module "event_driven_us_east_1" {
+  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-1") ? 1 : 0
+  source = "./modules/firefly_event_driven"
+  env    = var.name
+  region = "us-east-1"
+  role_name = module.firefly_aws_integration.event_driven_role_name
+  lambda_environment_variables = {
+    FIREFLY_SECRET_KEY = var.firefly_secret_key
+    FIREFLY_ACCESS_KEY = var.firefly_access_key
+    FIREFLY_EVENT_DRIVEN_API = var.firefly_endpoint
+    SSM_PARAMETER_NAME = var.token_parameter_name
   }
-
-  provisioner "local-exec" {
-    command = <<CURL
-curl --request POST "${var.firefly_endpoint}/integrations/aws/" \
-  --header "Content-Type: application/json" \
-  --header "Authorization: Bearer ${jsondecode(data.httpclient_request.req.response_body).access_token}" \
-    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "NOT_CONFIGURED", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
-
-CURL
+  depends_on = [
+    module.firefly_aws_integration
+  ]
+   providers      = {
+    aws = aws.us_east_1
   }
-
-  depends_on = [aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_write_permission, aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds]
 }
+module "event_driven_us_west_2" {
+  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-2") ? 1 : 0
+  source = "./modules/firefly_event_driven"
+  env    = var.name
+  region = "us-west-2"
+  role_name = module.firefly_aws_integration.event_driven_role_name
+  lambda_environment_variables = {
+    FIREFLY_SECRET_KEY = var.firefly_secret_key
+    FIREFLY_ACCESS_KEY = var.firefly_access_key
+    FIREFLY_EVENT_DRIVEN_API = var.firefly_endpoint
+    SSM_PARAMETER_NAME = var.token_parameter_name
+  }
+  depends_on = [
+    module.firefly_aws_integration,
+  ]
+   providers      = {
+    aws = aws.us_west_2
+  }
+}
+module "event_driven_us_east_2" {
+  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-2") ? 1 : 0
+  source = "./modules/firefly_event_driven"
+  env    = var.name
+  region = "us-east-2"
+  role_name = module.firefly_aws_integration.event_driven_role_name
+  lambda_environment_variables = {
+    FIREFLY_SECRET_KEY = var.firefly_secret_key
+    FIREFLY_ACCESS_KEY = var.firefly_access_key
+    FIREFLY_EVENT_DRIVEN_API = var.firefly_endpoint
+    SSM_PARAMETER_NAME = var.token_parameter_name
+  }
+  depends_on = [
+    module.firefly_aws_integration,
+  ]
+   providers      = {
+    aws = aws.us_east_2
+  }
+}
+module "event_driven_us_west_1" {
+  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-1") ? 1 : 0
+  source = "./modules/firefly_event_driven"
+  env    = var.name
+  region = "us-west-1"
+  role_name = module.firefly_aws_integration.event_driven_role_name
+  lambda_environment_variables = {
+    FIREFLY_SECRET_KEY = var.firefly_secret_key
+    FIREFLY_ACCESS_KEY = var.firefly_access_key
+    FIREFLY_EVENT_DRIVEN_API = var.firefly_endpoint
+    SSM_PARAMETER_NAME = var.token_parameter_name
+  }
+  depends_on = [
+    module.firefly_aws_integration,
+  ]
+   providers      = {
+    aws = aws.us_west_1
+  }
+}
+module "event_driven_ap_northeast_3" {
+  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-3") ? 1 : 0
+  source = "./modules/firefly_event_driven"
+  env    = var.name
+  region = "ap-northeast-3"
+  role_name = module.firefly_aws_integration.event_driven_role_name
+  lambda_environment_variables = {
+    FIREFLY_SECRET_KEY = var.firefly_secret_key
+    FIREFLY_ACCESS_KEY = var.firefly_access_key
+    FIREFLY_EVENT_DRIVEN_API = var.firefly_endpoint
+    SSM_PARAMETER_NAME = var.token_parameter_name
+  }
+  depends_on = [
+    module.firefly_aws_integration,
+  ]
+   providers      = {
+    aws = aws.ap_northeast_3
+  }
+}
+
+

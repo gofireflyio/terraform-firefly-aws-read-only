@@ -146,8 +146,8 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
   })
 }
 
-resource "aws_iam_policy" "firefly_s3_specific_write_permission" {
-  name        = "S3SpecificWritePermission"
+resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
+  name        = "S3SpecificReadPermission"
   path        = "/"
   description = "Read only permission for the Specific S3 Buckets"
 
@@ -193,6 +193,27 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
   managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
                          "arn:aws:iam::aws:policy/ReadOnlyAccess",
                          aws_iam_policy.firefly_readonly_policy_deny_list.arn,
-                         aws_iam_policy.firefly_s3_specific_write_permission.arn]
+                         aws_iam_policy.firefly_s3_specific_read_permission.arn]
 
+}
+
+resource "aws_iam_role" "event_driven_firefly_role" {
+  count = var.event_driven ? 1 : 0
+  name = "firefly-event-driven-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
 }
