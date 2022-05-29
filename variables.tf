@@ -16,7 +16,7 @@ variable "name" {
 variable "firefly_endpoint" {
   type        = string
   description = "The Firefly endpoint to register account management"
-  default     = "https://prodapi.infralight.cloud/api"
+  default     = "https://prodapi.gofirefly.cloud/api"
 }
 
 variable is_prod {
