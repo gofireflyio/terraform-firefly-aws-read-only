@@ -59,7 +59,6 @@ resource "aws_iam_policy" "firefly_readonly_policy_part6" {
           "s3:GetMultiRegionAccessPoint",
           "s3:GetMultiRegionAccessPointPolicy",
           "s3:GetObjectTagging",
-          "s3:GetObjectVersion",
           "s3:GetReplicationConfiguration",
           "s3:List*",
           "sagemaker:Describe*",
