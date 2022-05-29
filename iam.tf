@@ -17,6 +17,15 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
       },
       {
         "Action" : [
+          "s3:GetObjectVersion"
+        ],
+        "Effect" : "Allow",
+        "Resource" : [
+          "arn:aws:s3:::*/*.tfstate"
+        ]
+      },
+      {
+        "Action" : [
           "s3:GetObject"
         ],
         "Effect" : "Allow",
