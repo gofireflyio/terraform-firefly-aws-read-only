@@ -186,7 +186,12 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
         "Principal" : {
           "AWS" : "arn:aws:iam::${local.organizationID}:root"
         },
-        "Effect" : "Allow"
+        "Effect" : "Allow",
+        "Condition": {
+          "StringEquals": {
+            "sts:ExternalId": var.role_external_id
+          }
+        }
       }
     ]
   })

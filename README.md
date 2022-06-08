@@ -25,5 +25,6 @@ module "firefly-read-only" {
   source              = "infralight/terraform-firefly-aws-read-only"
   firefly_access_key  = "YOUR_ACCESS_KEY"
   fierfly_secret_key  = "YOUR_SECRET_KEY"
+  role_external_id    = "YOUR_EXTERNAL_ID"
 }
 ```
