@@ -11,6 +11,11 @@ variable "lambda_environment_variables" {
   default = {}
 }
 
-variable "role_name"{
+variable "eventdriven_role_name"{
   type = string
+}
+
+variable "lambda_name"{
+  type = string
+  default = "event_driven_firefly"
 }

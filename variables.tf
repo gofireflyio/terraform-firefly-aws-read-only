@@ -8,6 +8,11 @@ variable "firefly_secret_key" {
   description = "Your authentication secret_key"
 }
 
+variable "firefly_account_id" {
+  type        = string
+  description = "Your firefly account identifier"
+}
+
 variable "name" {
   type        = string
   description = "Name of the AWS integration"
@@ -16,7 +21,7 @@ variable "name" {
 variable "firefly_endpoint" {
   type        = string
   description = "The Firefly endpoint to register account management"
-  default     = "https://prodapi.infralight.cloud/api"
+  default     = "https://prodapi.gofirefly.io/api"
 }
 
 variable is_prod {

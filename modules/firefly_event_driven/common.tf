@@ -20,6 +20,13 @@ resource "aws_iam_policy" "event_driven_firefly_policy" {
             ],
             "Effect": "Allow",
             "Resource": "*"
+        },
+        {
+            "Action": [
+              "events:PutRule"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:events:*:${local.account_id}:rule/firefly-events-*"
         }
     ]
 })
@@ -33,9 +40,4 @@ resource "aws_iam_role_policy_attachment" "event_driven_firefly_policy_attachmen
 resource "aws_iam_role_policy_attachment" "event_driven_firefly_lambda_basic_policy_attachment" {
   role      = data.aws_iam_role.event_driven_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-}
-
-resource "aws_iam_role_policy_attachment" "event_driven_firefly_lambda_vpc_policy_attachment" {
-  role      = data.aws_iam_role.event_driven_role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
 }

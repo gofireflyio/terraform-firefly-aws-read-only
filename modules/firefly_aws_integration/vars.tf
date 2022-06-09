@@ -18,19 +18,20 @@ variable "firefly_endpoint" {
   description = "The Firefly endpoint to register account management"
 }
 
-variable is_prod {
+variable "is_prod" {
   type        = bool
   default     = false
   description = "Is Production?"
 }
 
-variable full_scan_enabled {
+variable "full_scan_enabled" {
   type        = bool
   default     = true
   description = "Full scan enabled?"
 }
 
-variable event_driven{
+variable "event_driven"{
   type = bool
   default = false 
+  description = "Is event driven infrastructre installed?"
 }

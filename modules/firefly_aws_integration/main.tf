@@ -24,14 +24,20 @@ resource "time_sleep" "wait_10_seconds" {
   create_duration = "10s"
 }
 
-module "firefly_create_integration" {
-  source                                = "./modules/firefly_create_integration"
-  firefly_access_token                  = jsondecode(data.httpclient_request.req.response_body).access_token
-  firefly_cross_account_access_role_arn = aws_iam_role.firefly_cross_account_access_role.arn
-  firefly_endpoint                      = var.firefly_endpoint
-  name                                  = var.name
-  full_scan_enabled                     = var.full_scan_enabled
-  is_prod                               = var.is_prod
+resource "null_resource" "firefly_create_integration" {
+  triggers = {
+    version = local.version
+  }
+
+  provisioner "local-exec" {
+    command = <<CURL
+curl --request POST "${var.firefly_endpoint}/integrations/aws/" \
+  --header "Content-Type: application/json" \
+  --header "Authorization: Bearer ${jsondecode(data.httpclient_request.req.response_body).access_token}" \
+    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "NOT_CONFIGURED", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
+
+CURL
+  }
   depends_on = [
     aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_read_permission,
     aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds

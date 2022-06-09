@@ -1,5 +1,4 @@
 variable "actions" {
-//TODO: many firefly unsupported services are commented due to policy characters limitations- need to find solution:
   default = {
     "acm" : {
       "rules" : [
@@ -85,18 +84,18 @@ variable "actions" {
         "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "athena" : {
-#      "rules" : [
-#        "CreateDataCatalog", "CreateNamedQuery", "CreatePreparedStatement", "CreateWorkGroup", "DeleteDataCatalog",
-#        "DeleteNamedQuery", "DeletePreparedStatement", "DeleteWorkGroup", "UpdateDataCatalog",
-#        "UpdatePreparedStatement", "UpdateWorkGroup"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-#        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-#        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
+   "athena" : {
+     "rules" : [
+       "CreateDataCatalog", "CreateNamedQuery", "CreatePreparedStatement", "CreateWorkGroup", "DeleteDataCatalog",
+       "DeleteNamedQuery", "DeletePreparedStatement", "DeleteWorkGroup", "UpdateDataCatalog",
+       "UpdatePreparedStatement", "UpdateWorkGroup"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
     "autoscaling" : {
       "rules" : [
         "AttachInstances", "AttachLoadBalancerTargetGroups", "AttachLoadBalancers", "CreateAutoScalingGroup",
@@ -157,7 +156,7 @@ variable "actions" {
         "UpdateKeyGroup", "UpdateOriginRequestPolicy", "UpdatePublicKey", "UpdateRealtimeLogConfig",
         "UpdateResponseHeadersPolicy", "UpdateStreamingDistribution"
       ],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "cloudtrail" : {
       "rules" : [
@@ -208,16 +207,16 @@ variable "actions" {
         "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "codestar" : {
-#      "rules" : [
-#        "AssociateTeamMember", "CreateProject", "CreateUserProfile", "DeleteProject", "DeleteUserProfile",
-#        "DisassociateTeamMember", "UpdateProject", "UpdateTeamMember", "UpdateUserProfile"
-#      ],
-#      "regions" : [
-#        "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "eu-central-1",
-#        "eu-north-1", "eu-west-1", "eu-west-2", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
+   "codestar" : {
+     "rules" : [
+       "AssociateTeamMember", "CreateProject", "CreateUserProfile", "DeleteProject", "DeleteUserProfile",
+       "DisassociateTeamMember", "UpdateProject", "UpdateTeamMember", "UpdateUserProfile"
+     ],
+     "regions" : [
+       "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "eu-central-1",
+       "eu-north-1", "eu-west-1", "eu-west-2", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
     "cognito-identity" : {
       "rules" : [
         "CreateIdentityPool", "DeleteIdentities", "DeleteIdentityPool", "MergeDeveloperIdentities",
@@ -230,71 +229,71 @@ variable "actions" {
         "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "connect" : {
-#      "rules" : [
-#        "AssociateApprovedOrigin", "AssociateBot", "AssociateInstanceStorageConfig", "AssociateLambdaFunction",
-#        "AssociateLexBot", "AssociateQueueQuickConnects", "AssociateRoutingProfileQueues", "AssociateSecurityKey",
-#        "CreateAgentStatus", "CreateContactFlow", "CreateContactFlowModule", "CreateHoursOfOperation", "CreateInstance",
-#        "CreateIntegrationAssociation", "CreateQueue", "CreateQuickConnect", "CreateRoutingProfile",
-#        "CreateSecurityProfile", "CreateUseCase", "CreateUser", "CreateUserHierarchyGroup", "DeleteContactFlow",
-#        "DeleteContactFlowModule", "DeleteHoursOfOperation", "DeleteInstance", "DeleteIntegrationAssociation",
-#        "DeleteQuickConnect", "DeleteSecurityProfile", "DeleteUseCase", "DeleteUser", "DeleteUserHierarchyGroup",
-#        "DisassociateApprovedOrigin", "DisassociateBot", "DisassociateInstanceStorageConfig",
-#        "DisassociateLambdaFunction", "DisassociateLexBot", "DisassociateQueueQuickConnects",
-#        "DisassociateRoutingProfileQueues", "DisassociateSecurityKey", "SuspendContactRecording", "UpdateAgentStatus",
-#        "UpdateContact", "UpdateContactAttributes", "UpdateContactFlowContent", "UpdateContactFlowMetadata",
-#        "UpdateContactFlowModuleContent", "UpdateContactFlowModuleMetadata", "UpdateContactFlowName",
-#        "UpdateContactSchedule", "UpdateHoursOfOperation", "UpdateInstanceAttribute", "UpdateInstanceStorageConfig",
-#        "UpdateQueueHoursOfOperation", "UpdateQueueMaxContacts", "UpdateQueueName", "UpdateQueueOutboundCallerConfig",
-#        "UpdateQueueStatus", "UpdateQuickConnectConfig", "UpdateQuickConnectName", "UpdateRoutingProfileConcurrency",
-#        "UpdateRoutingProfileDefaultOutboundQueue", "UpdateRoutingProfileName", "UpdateRoutingProfileQueues",
-#        "UpdateSecurityProfile", "UpdateUserHierarchy", "UpdateUserHierarchyGroupName", "UpdateUserHierarchyStructure",
-#        "UpdateUserIdentityInfo", "UpdateUserPhoneConfig", "UpdateUserRoutingProfile", "UpdateUserSecurityProfiles"
-#      ],
-#      "regions" : [
-#        "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "eu-central-1",
-#        "eu-west-2", "us-east-1", "us-west-2"
-#      ]
-#    },
-#    "databrew" : {
-#      "rules" : [
-#        "CreateDataset", "CreateProfileJob", "CreateProject", "CreateRecipe", "CreateRecipeJob", "CreateRuleset",
-#        "CreateSchedule", "DeleteDataset", "DeleteJob", "DeleteProject", "DeleteRecipeVersion", "DeleteRuleset",
-#        "DeleteSchedule", "UpdateDataset", "UpdateProfileJob", "UpdateProject", "UpdateRecipe", "UpdateRecipeJob",
-#        "UpdateRuleset", "UpdateSchedule"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-south-1", "ap-southeast-1", "ap-southeast-2",
-#        "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2", "eu-west-3", "sa-east-1",
-#        "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
-#    "datapipeline" : {
-#      "rules" : [
-#        "ActivatePipeline", "AddTags", "CreatePipeline", "DeactivatePipeline", "DeletePipeline",
-#        "PutPipelineDefinition", "RemoveTags", "SetStatus", "SetTaskStatus"
-#      ],
-#      "regions" : ["ap-northeast-1", "ap-southeast-2", "eu-west-1", "us-east-1", "us-west-2"]
-#    },
-#    "devops-guru" : {
-#      "rules" : [
-#        "AddNotificationChannel", "PutFeedback", "RemoveNotificationChannel", "UpdateResourceCollection",
-#        "UpdateServiceIntegration"
-#      ],
-#      "regions" : [
-#        "ap-southeast-2", "eu-west-2", "ap-northeast-2", "eu-west-1", "eu-south-1", "ap-south-1", "ap-northeast-3",
-#        "me-south-1", "ca-central-1", "ap-east-1", "us-west-1", "ap-northeast-1", "af-south-1", "sa-east-1",
-#        "eu-north-1", "us-east-1", "us-west-2", "us-east-2", "eu-central-1", "eu-west-3", "ap-southeast-1"
-#      ]
-#    },
-#    "dlm" : {
-#      "rules" : ["CreateLifecyclePolicy", "DeleteLifecyclePolicy", "UpdateLifecyclePolicy"],
-#      "regions" : [
-#        "ap-southeast-2", "eu-west-2", "ap-northeast-2", "eu-west-1", "eu-south-1", "ap-south-1", "ap-northeast-3",
-#        "me-south-1", "ca-central-1", "ap-east-1", "us-west-1", "ap-northeast-1", "af-south-1", "sa-east-1",
-#        "eu-north-1", "us-east-1", "us-west-2", "us-east-2", "eu-central-1", "eu-west-3", "ap-southeast-1"
-#      ]
-#    },
+   "connect" : {
+     "rules" : [
+       "AssociateApprovedOrigin", "AssociateBot", "AssociateInstanceStorageConfig", "AssociateLambdaFunction",
+       "AssociateLexBot", "AssociateQueueQuickConnects", "AssociateRoutingProfileQueues", "AssociateSecurityKey",
+       "CreateAgentStatus", "CreateContactFlow", "CreateContactFlowModule", "CreateHoursOfOperation", "CreateInstance",
+       "CreateIntegrationAssociation", "CreateQueue", "CreateQuickConnect", "CreateRoutingProfile",
+       "CreateSecurityProfile", "CreateUseCase", "CreateUser", "CreateUserHierarchyGroup", "DeleteContactFlow",
+       "DeleteContactFlowModule", "DeleteHoursOfOperation", "DeleteInstance", "DeleteIntegrationAssociation",
+       "DeleteQuickConnect", "DeleteSecurityProfile", "DeleteUseCase", "DeleteUser", "DeleteUserHierarchyGroup",
+       "DisassociateApprovedOrigin", "DisassociateBot", "DisassociateInstanceStorageConfig",
+       "DisassociateLambdaFunction", "DisassociateLexBot", "DisassociateQueueQuickConnects",
+       "DisassociateRoutingProfileQueues", "DisassociateSecurityKey", "SuspendContactRecording", "UpdateAgentStatus",
+       "UpdateContact", "UpdateContactAttributes", "UpdateContactFlowContent", "UpdateContactFlowMetadata",
+       "UpdateContactFlowModuleContent", "UpdateContactFlowModuleMetadata", "UpdateContactFlowName",
+       "UpdateContactSchedule", "UpdateHoursOfOperation", "UpdateInstanceAttribute", "UpdateInstanceStorageConfig",
+       "UpdateQueueHoursOfOperation", "UpdateQueueMaxContacts", "UpdateQueueName", "UpdateQueueOutboundCallerConfig",
+       "UpdateQueueStatus", "UpdateQuickConnectConfig", "UpdateQuickConnectName", "UpdateRoutingProfileConcurrency",
+       "UpdateRoutingProfileDefaultOutboundQueue", "UpdateRoutingProfileName", "UpdateRoutingProfileQueues",
+       "UpdateSecurityProfile", "UpdateUserHierarchy", "UpdateUserHierarchyGroupName", "UpdateUserHierarchyStructure",
+       "UpdateUserIdentityInfo", "UpdateUserPhoneConfig", "UpdateUserRoutingProfile", "UpdateUserSecurityProfiles"
+     ],
+     "regions" : [
+       "ap-northeast-1", "ap-northeast-2", "ap-southeast-1", "ap-southeast-2", "ca-central-1", "eu-central-1",
+       "eu-west-2", "us-east-1", "us-west-2"
+     ]
+   },
+   "databrew" : {
+     "rules" : [
+       "CreateDataset", "CreateProfileJob", "CreateProject", "CreateRecipe", "CreateRecipeJob", "CreateRuleset",
+       "CreateSchedule", "DeleteDataset", "DeleteJob", "DeleteProject", "DeleteRecipeVersion", "DeleteRuleset",
+       "DeleteSchedule", "UpdateDataset", "UpdateProfileJob", "UpdateProject", "UpdateRecipe", "UpdateRecipeJob",
+       "UpdateRuleset", "UpdateSchedule"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-south-1", "ap-southeast-1", "ap-southeast-2",
+       "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2", "eu-west-3", "sa-east-1",
+       "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
+   "datapipeline" : {
+     "rules" : [
+       "ActivatePipeline", "AddTags", "CreatePipeline", "DeactivatePipeline", "DeletePipeline",
+       "PutPipelineDefinition", "RemoveTags", "SetStatus", "SetTaskStatus"
+     ],
+     "regions" : ["ap-northeast-1", "ap-southeast-2", "eu-west-1", "us-east-1", "us-west-2"]
+   },
+   "devops-guru" : {
+     "rules" : [
+       "AddNotificationChannel", "PutFeedback", "RemoveNotificationChannel", "UpdateResourceCollection",
+       "UpdateServiceIntegration"
+     ],
+     "regions" : [
+       "ap-southeast-2", "eu-west-2", "ap-northeast-2", "eu-west-1", "eu-south-1", "ap-south-1", "ap-northeast-3",
+       "me-south-1", "ca-central-1", "ap-east-1", "us-west-1", "ap-northeast-1", "af-south-1", "sa-east-1",
+       "eu-north-1", "us-east-1", "us-west-2", "us-east-2", "eu-central-1", "eu-west-3", "ap-southeast-1"
+     ]
+   },
+   "dlm" : {
+     "rules" : ["CreateLifecyclePolicy", "DeleteLifecyclePolicy", "UpdateLifecyclePolicy"],
+     "regions" : [
+       "ap-southeast-2", "eu-west-2", "ap-northeast-2", "eu-west-1", "eu-south-1", "ap-south-1", "ap-northeast-3",
+       "me-south-1", "ca-central-1", "ap-east-1", "us-west-1", "ap-northeast-1", "af-south-1", "sa-east-1",
+       "eu-north-1", "us-east-1", "us-west-2", "us-east-2", "eu-central-1", "eu-west-3", "ap-southeast-1"
+     ]
+   },
     "docdb" : {
       "rules" : [
         "AddSourceIdentifierToSubscription", "AddTagsToResource", "ApplyPendingMaintenanceAction", "CreateDBCluster",
@@ -311,19 +310,19 @@ variable "actions" {
         "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "sa-east-1", "us-east-1", "us-east-2", "us-west-2"
       ]
     },
-#    "drs" : {
-#      "rules" : [
-#        "CreateReplicationConfigurationTemplate", "DeleteJob", "DeleteRecoveryInstance",
-#        "DeleteReplicationConfigurationTemplate", "DeleteSourceServer", "DisconnectRecoveryInstance",
-#        "DisconnectSourceServer", "InitializeService", "TerminateRecoveryInstances",
-#        "UpdateFailbackReplicationConfiguration", "UpdateLaunchConfiguration", "UpdateReplicationConfiguration",
-#        "UpdateReplicationConfigurationTemplate"
-#      ],
-#      "regions" : [
-#        "ap-northeast-1", "ap-southeast-1", "ap-southeast-2", "eu-central-1", "eu-west-1", "eu-west-2", "us-east-1",
-#        "us-east-2", "us-west-2"
-#      ]
-#    },
+   "drs" : {
+     "rules" : [
+       "CreateReplicationConfigurationTemplate", "DeleteJob", "DeleteRecoveryInstance",
+       "DeleteReplicationConfigurationTemplate", "DeleteSourceServer", "DisconnectRecoveryInstance",
+       "DisconnectSourceServer", "InitializeService", "TerminateRecoveryInstances",
+       "UpdateFailbackReplicationConfiguration", "UpdateLaunchConfiguration", "UpdateReplicationConfiguration",
+       "UpdateReplicationConfigurationTemplate"
+     ],
+     "regions" : [
+       "ap-northeast-1", "ap-southeast-1", "ap-southeast-2", "eu-central-1", "eu-west-1", "eu-west-2", "us-east-1",
+       "us-east-2", "us-west-2"
+     ]
+   },
     "dynamodb" : {
       "rules" : [
         "CreateGlobalTable", "CreateTable", "DeleteTable", "DisableKinesisStreamingDestination",
@@ -538,48 +537,48 @@ variable "actions" {
         "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "elasticloadbalancing" : {
-#      "rules" : [
-#        "AddTags", "ApplySecurityGroupsToLoadBalancer", "AttachLoadBalancerToSubnets", "ConfigureHealthCheck",
-#        "CreateAppCookieStickinessPolicy", "CreateLBCookieStickinessPolicy", "CreateLoadBalancer",
-#        "CreateLoadBalancerListeners", "CreateLoadBalancerPolicy", "DeleteLoadBalancer", "DeleteLoadBalancerListeners",
-#        "DeleteLoadBalancerPolicy", "DeregisterInstancesFromLoadBalancer", "DetachLoadBalancerFromSubnets",
-#        "DisableAvailabilityZonesForLoadBalancer", "EnableAvailabilityZonesForLoadBalancer",
-#        "ModifyLoadBalancerAttributes", "RemoveTags", "SetLoadBalancerListenerSSLCertificate",
-#        "SetLoadBalancerPoliciesForBackendServer", "SetLoadBalancerPoliciesOfListener"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-#        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-#        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
-#    "elasticmapreduce" : {
-#      "rules" : [
-#        "AddInstanceFleet", "AddInstanceGroups", "AddJobFlowSteps", "AddTags", "CreateSecurityConfiguration",
-#        "CreateStudio", "CreateStudioSessionMapping", "DeleteSecurityConfiguration", "DeleteStudio",
-#        "DeleteStudioSessionMapping", "ModifyCluster", "ModifyInstanceFleet", "ModifyInstanceGroups",
-#        "PutAutoScalingPolicy", "PutAutoTerminationPolicy", "PutBlockPublicAccessConfiguration",
-#        "PutManagedScalingPolicy", "RemoveAutoScalingPolicy", "RemoveAutoTerminationPolicy",
-#        "RemoveManagedScalingPolicy", "RemoveTags", "RunJobFlow", "SetTerminationProtection", "SetVisibleToAllUsers",
-#        "TerminateJobFlows", "UpdateStudio", "UpdateStudioSessionMapping"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-#        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-#        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
-#    "elastictranscoder" : {
-#      "rules" : [
-#        "CreateJob", "CreatePipeline", "CreatePreset", "DeletePipeline", "DeletePreset", "ReadPipeline", "ReadPreset",
-#        "UpdatePipeline", "UpdatePipelineNotifications", "UpdatePipelineStatus"
-#      ],
-#      "regions" : [
-#        "ap-northeast-1", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "eu-west-1", "us-east-1", "us-west-1",
-#        "us-west-2"
-#      ]
-#    },
+   "elasticloadbalancing" : {
+     "rules" : [
+       "AddTags", "ApplySecurityGroupsToLoadBalancer", "AttachLoadBalancerToSubnets", "ConfigureHealthCheck",
+       "CreateAppCookieStickinessPolicy", "CreateLBCookieStickinessPolicy", "CreateLoadBalancer",
+       "CreateLoadBalancerListeners", "CreateLoadBalancerPolicy", "DeleteLoadBalancer", "DeleteLoadBalancerListeners",
+       "DeleteLoadBalancerPolicy", "DeregisterInstancesFromLoadBalancer", "DetachLoadBalancerFromSubnets",
+       "DisableAvailabilityZonesForLoadBalancer", "EnableAvailabilityZonesForLoadBalancer",
+       "ModifyLoadBalancerAttributes", "RemoveTags", "SetLoadBalancerListenerSSLCertificate",
+       "SetLoadBalancerPoliciesForBackendServer", "SetLoadBalancerPoliciesOfListener"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
+   "elasticmapreduce" : {
+     "rules" : [
+       "AddInstanceFleet", "AddInstanceGroups", "AddJobFlowSteps", "AddTags", "CreateSecurityConfiguration",
+       "CreateStudio", "CreateStudioSessionMapping", "DeleteSecurityConfiguration", "DeleteStudio",
+       "DeleteStudioSessionMapping", "ModifyCluster", "ModifyInstanceFleet", "ModifyInstanceGroups",
+       "PutAutoScalingPolicy", "PutAutoTerminationPolicy", "PutBlockPublicAccessConfiguration",
+       "PutManagedScalingPolicy", "RemoveAutoScalingPolicy", "RemoveAutoTerminationPolicy",
+       "RemoveManagedScalingPolicy", "RemoveTags", "RunJobFlow", "SetTerminationProtection", "SetVisibleToAllUsers",
+       "TerminateJobFlows", "UpdateStudio", "UpdateStudioSessionMapping"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
+   "elastictranscoder" : {
+     "rules" : [
+       "CreateJob", "CreatePipeline", "CreatePreset", "DeletePipeline", "DeletePreset", "ReadPipeline", "ReadPreset",
+       "UpdatePipeline", "UpdatePipelineNotifications", "UpdatePipelineStatus"
+     ],
+     "regions" : [
+       "ap-northeast-1", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "eu-west-1", "us-east-1", "us-west-1",
+       "us-west-2"
+     ]
+   },
     "emr-containers" : {
       "rules" : ["CreateManagedEndpoint", "CreateVirtualCluster", "DeleteManagedEndpoint", "DeleteVirtualCluster"],
       "regions" : [
@@ -602,20 +601,20 @@ variable "actions" {
         "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "events" : {
-#      "rules" : [
-#        "ActivateEventSource", "CreateApiDestination", "CreateArchive", "CreateConnection", "CreateEventBus",
-#        "CreatePartnerEventSource", "DeactivateEventSource", "DeauthorizeConnection", "DeleteApiDestination",
-#        "DeleteArchive", "DeleteEventBus", "DeletePartnerEventSource", "DeleteRule", "DisableRule", "EnableRule",
-#        "PutEvents", "PutPartnerEvents", "PutPermission", "PutRule", "PutTargets", "RemovePermission", "RemoveTargets",
-#        "UpdateApiDestination", "UpdateArchive", "UpdateConnection"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-#        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-#        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
+   "events" : {
+     "rules" : [
+       "ActivateEventSource", "CreateApiDestination", "CreateArchive", "CreateConnection", "CreateEventBus",
+       "CreatePartnerEventSource", "DeactivateEventSource", "DeauthorizeConnection", "DeleteApiDestination",
+       "DeleteArchive", "DeleteEventBus", "DeletePartnerEventSource", "DeleteRule", "DisableRule", "EnableRule",
+       "PutEvents", "PutPartnerEvents", "PutPermission", "PutRule", "PutTargets", "RemovePermission", "RemoveTargets",
+       "UpdateApiDestination", "UpdateArchive", "UpdateConnection"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
     "firehose" : {
       "rules" : ["CreateDeliveryStream", "DeleteDeliveryStream", "UpdateDestination"],
       "regions" : [
@@ -643,18 +642,18 @@ variable "actions" {
         "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-#    "glacier" : {
-#      "rules" : [
-#        "AddTagsToVault", "CreateVault", "DeleteArchive", "DeleteVault", "DeleteVaultAccessPolicy",
-#        "DeleteVaultNotifications", "InitiateJob", "InitiateMultipartUpload", "InitiateVaultLock",
-#        "RemoveTagsFromVault", "SetDataRetrievalPolicy", "SetVaultAccessPolicy", "SetVaultNotifications"
-#      ],
-#      "regions" : [
-#        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-#        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-#        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-#      ]
-#    },
+   "glacier" : {
+     "rules" : [
+       "AddTagsToVault", "CreateVault", "DeleteArchive", "DeleteVault", "DeleteVaultAccessPolicy",
+       "DeleteVaultNotifications", "InitiateJob", "InitiateMultipartUpload", "InitiateVaultLock",
+       "RemoveTagsFromVault", "SetDataRetrievalPolicy", "SetVaultAccessPolicy", "SetVaultNotifications"
+     ],
+     "regions" : [
+       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+     ]
+   },
     "globalaccelerator" : {
       "rules" : [
         "AddCustomRoutingEndpoints", "AllowCustomRoutingTraffic", "CreateAccelerator", "CreateCustomRoutingAccelerator",
@@ -764,7 +763,7 @@ variable "actions" {
         "UpdateRoleDescription", "UpdateSAMLProvider", "UpdateSSHPublicKey", "UpdateServerCertificate",
         "UpdateServiceSpecificCredential", "UpdateSigningCertificate", "UpdateUser"
       ],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "inspector" : {
       "rules" : [
@@ -864,24 +863,6 @@ variable "actions" {
         "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
         "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
-    },
-    "lambda" : {
-      "rules" : [
-        "AddLayerVersionPermission", "AddPermission", "CreateAlias", "CreateCodeSigningConfig",
-        "CreateEventSourceMapping", "CreateFunction", "DeleteAlias", "DeleteCodeSigningConfig",
-        "DeleteEventSourceMapping", "DeleteFunction", "DeleteFunctionCodeSigningConfig", "DeleteFunctionConcurrency",
-        "DeleteFunctionEventInvokeConfig", "DeleteLayerVersion", "DeleteProvisionedConcurrencyConfig",
-        "PutFunctionCodeSigningConfig", "PutFunctionConcurrency", "PutFunctionEventInvokeConfig",
-        "PutProvisionedConcurrencyConfig", "RemoveLayerVersionPermission", "RemovePermission", "UpdateAlias",
-        "UpdateCodeSigningConfig", "UpdateEventSourceMapping", "UpdateFunctionCode", "UpdateFunctionConfiguration",
-        "UpdateFunctionEventInvokeConfig"
-      ],
-      "regions" : [
-        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
-        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
-      ],
-      "prefix" : true
     },
     "lightsail" : {
       "rules" : [
@@ -1013,7 +994,7 @@ variable "actions" {
         "UpdateCoreNetwork", "UpdateDevice", "UpdateGlobalNetwork", "UpdateLink", "UpdateNetworkResourceMetadata",
         "UpdateSite", "UpdateVpcAttachment"
       ],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "opsworks-cm" : {
       "rules" : [
@@ -1033,7 +1014,7 @@ variable "actions" {
         "EnableAWSServiceAccess", "EnableAllFeatures", "EnablePolicyType", "LeaveOrganization", "MoveAccount",
         "RemoveAccountFromOrganization", "UpdateOrganizationalUnit", "UpdatePolicy"
       ],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "polly" : {
       "rules" : ["DeleteLexicon", "PutLexicon", "SynthesizeSpeech"],
@@ -1134,14 +1115,6 @@ variable "actions" {
         "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     },
-    "redshift-data" : {
-      "rules" : [],
-      "regions" : [
-        "ap-southeast-2", "eu-west-2", "ap-northeast-2", "eu-west-1", "eu-south-1", "ap-south-1", "ap-northeast-3",
-        "me-south-1", "ca-central-1", "ap-east-1", "us-west-1", "ap-northeast-1", "af-south-1", "sa-east-1",
-        "eu-north-1", "us-east-1", "us-west-2", "us-east-2", "eu-central-1", "eu-west-3", "ap-southeast-1"
-      ]
-    },
     "route53" : {
       "rules" : [
         "ActivateKeySigningKey", "AssociateVPCWithHostedZone", "ChangeResourceRecordSets", "ChangeTagsForResource",
@@ -1154,7 +1127,7 @@ variable "actions" {
         "EnableHostedZoneDNSSEC", "UpdateHealthCheck", "UpdateHostedZoneComment", "UpdateTrafficPolicyComment",
         "UpdateTrafficPolicyInstance"
       ],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "route53resolver" : {
       "rules" : [
@@ -1190,7 +1163,7 @@ variable "actions" {
       "regions" : [
         "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
         "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
-        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2", "aws-global"
+        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2", "us-east-1"
       ]
     },
     "s3-outposts" : {
@@ -1245,7 +1218,7 @@ variable "actions" {
     },
     "savingsplans" : {
       "rules" : ["CreateSavingsPlan", "DeleteQueuedSavingsPlan"],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "schemas" : {
       "rules" : [
@@ -1439,7 +1412,7 @@ variable "actions" {
     },
     "support" : {
       "rules" : ["AddAttachmentsToSet", "AddCommunicationToCase", "CreateCase", "ResolveCase"],
-      "regions" : ["aws-global"]
+      "regions" : ["us-east-1"]
     },
     "swf" : {
       "rules" : [
@@ -1476,5 +1449,27 @@ variable "actions" {
         "us-east-1", "us-east-2", "us-west-1", "us-west-2"
       ]
     }
+  }
+}
+
+variable "prefix_actions"{
+  default = {
+    "lambda" : {
+      "rules" : [
+        "AddLayerVersionPermission", "AddPermission", "CreateAlias", "CreateCodeSigningConfig",
+        "CreateEventSourceMapping", "CreateFunction", "DeleteAlias", "DeleteCodeSigningConfig",
+        "DeleteEventSourceMapping", "DeleteFunction", "DeleteFunctionCodeSigningConfig", "DeleteFunctionConcurrency",
+        "DeleteFunctionEventInvokeConfig", "DeleteLayerVersion", "DeleteProvisionedConcurrencyConfig",
+        "PutFunctionCodeSigningConfig", "PutFunctionConcurrency", "PutFunctionEventInvokeConfig",
+        "PutProvisionedConcurrencyConfig", "RemoveLayerVersionPermission", "RemovePermission", "UpdateAlias",
+        "UpdateCodeSigningConfig", "UpdateEventSourceMapping", "UpdateFunctionCode", "UpdateFunctionConfiguration",
+        "UpdateFunctionEventInvokeConfig"
+      ],
+      "regions" : [
+        "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
+        "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
+        "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
+      ]
+    },
   }
 }
