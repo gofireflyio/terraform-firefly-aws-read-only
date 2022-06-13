@@ -22,7 +22,7 @@ curl --help
 
 ```hcl-terraform
 module "firefly-read-only" {
-  source              = "infralight/terraform-firefly-aws-read-only"
+  source              = "gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key  = "YOUR_ACCESS_KEY"
   fierfly_secret_key  = "YOUR_SECRET_KEY"
 }
