@@ -13,6 +13,11 @@ variable "name" {
   description = "Name of the AWS integration"
 }
 
+variable "role_external_id" {
+  type        = string
+  description = "The External Id for the Firefly role generated"
+}
+
 variable "firefly_endpoint" {
   type        = string
   description = "The Firefly endpoint to register account management"

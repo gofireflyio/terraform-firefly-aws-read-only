@@ -31,7 +31,7 @@ resource "null_resource" "firefly_create_integration" {
 curl --request POST "${var.firefly_endpoint}/integrations/aws/" \
   --header "Content-Type: application/json" \
   --header "Authorization: Bearer ${jsondecode(data.httpclient_request.req.response_body).access_token}" \
-    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "NOT_CONFIGURED", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
+    --data ${jsonencode(jsonencode({"name"= var.name, "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn, "externalId"= "${var.role_external_id}", "fullScanEnabled": var.full_scan_enabled, "isProd": var.is_prod }))}
 
 CURL
   }
