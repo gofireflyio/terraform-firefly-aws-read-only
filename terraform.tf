@@ -5,9 +5,9 @@ terraform {
       version = "3.74.0"
     }
 
-    httpclient = {
-          version = "0.0.3"
-          source  = "dmachard/http-client"
-        }
+    terracurl = {
+      version = "0.1.0"
+      source= "devops-rob/terracurl"
+    }
   }
 }
