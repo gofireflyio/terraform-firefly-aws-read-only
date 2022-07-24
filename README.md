@@ -3,16 +3,12 @@
 
 ## Module contents
 
-Let's start with creating a read-only assume-role.
-Ensure you are logged into your AWS account with permission to create CloudFormation and IAM resources.
-Launch the CloudFormation template into your account:
-
-## Configuration
+Firefly terraform module to integrate your aws environment to firefly.
 
 ### Prerequisites
 
-This module requires the cURL library to be installed on your machine.
-To check if you have cURL installed, type the following command in your terminal:
+- AWS CLI installed (version )
+- The aws role running it should have permissions creation of roles in iam.
 
 ```shell script
 curl --help
@@ -21,10 +17,16 @@ curl --help
 ### Installation
 
 ```hcl-terraform
+provider "aws" {
+    region     =  "us-east-1"
+}
+
+
 module "firefly-read-only" {
   source              = "gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key  = "YOUR_ACCESS_KEY"
   fierfly_secret_key  = "YOUR_SECRET_KEY"
   role_external_id    = "YOUR_EXTERNAL_ID"
+  is_prod               = false/true
 }
 ```
