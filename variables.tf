@@ -52,3 +52,7 @@ variable "target_event_bus_arn"{
   type = string
   default = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
 }
+
+variable "role_arn"{
+  type = string
+}
