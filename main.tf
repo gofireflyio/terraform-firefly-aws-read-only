@@ -66,6 +66,10 @@ provider "aws" {
 provider "aws" {
   alias      = "us_east_1"
   region     = "us-east-1"
+  assume_role {
+    role_arn     = var.role_arn
+    session_name = "firefly"
+  }
 }
 
 provider "aws" {
