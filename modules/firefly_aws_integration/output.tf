@@ -6,6 +6,6 @@ output "template_vesion" {
   value = local.version
 }
 
-output "event_driven_role_name"{
-  value = var.event_driven ? aws_iam_role.event_driven_firefly_role[0].name : ""
+output "role_arn" {
+  value = module.eventbridge_rule_permission[0].role_arn
 }

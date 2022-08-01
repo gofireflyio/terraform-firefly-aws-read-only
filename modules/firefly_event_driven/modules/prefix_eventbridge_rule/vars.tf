@@ -1,8 +1,12 @@
-variable "event_driven_firefly_lambda_name" {
+variable "target_event_bus_arn" {
   type = string
 }
 
 variable "service" {
+  type = string
+}
+
+variable "rule_name"{
   type = string
 }
 
@@ -16,4 +20,8 @@ variable "running_region" {
 
 variable "service_regions"{
   type = list(string)
+}
+
+variable "role_arn"{
+  type = string
 }

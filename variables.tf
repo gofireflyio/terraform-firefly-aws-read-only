@@ -8,26 +8,21 @@ variable "firefly_secret_key" {
   description = "Your authentication secret_key"
 }
 
-variable "firefly_account_id" {
-  type        = string
-  description = "Your firefly account identifier"
-}
-
 variable "name" {
   type        = string
   description = "Name of the AWS integration"
-}
-
-variable "firefly_endpoint" {
-  type        = string
-  description = "The Firefly endpoint to register account management"
-  default     = "https://prodapi.gofirefly.io/api"
 }
 
 variable is_prod {
   type        = bool
   default     = false
   description = "Is Production?"
+}
+
+variable "firefly_endpoint" {
+  type        = string
+  description = "The Firefly endpoint to register account management"
+  default     = "https://prodapi.gofirefly.io/api"
 }
 
 variable full_scan_enabled {
@@ -51,4 +46,14 @@ variable event_driven_regions {
 variable token_parameter_name { 
   type = string
   default = "FireflyToken"
+}
+
+variable "target_event_bus_arn"{
+  type = string
+  default = "arn:aws:events:us-west-2:094724549126:event-bus/stag-stablefly-event-bus"
+}
+
+variable "role_external_id" {
+  type        = string
+  description = "The External Id for the Firefly role generated"
 }

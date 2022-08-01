@@ -35,3 +35,12 @@ variable "event_driven"{
   default = false 
   description = "Is event driven infrastructre installed?"
 }
+
+variable "target_event_bus_arn"{
+    type = string
+}
+
+variable "role_external_id" {
+  type        = string
+  description = "The External Id for the Firefly role generated"
+}

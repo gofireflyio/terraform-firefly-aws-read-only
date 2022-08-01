@@ -1,14 +1,13 @@
-variable "region" {
+variable "service"{
   type = string
 }
 
-variable "env" {
+variable "rule_name"{
   type = string
 }
 
-variable "lambda_environment_variables" {
-  type    = any
-  default = {}
+variable "event_pattarn"{
+
 }
 
 variable "target_event_bus_arn"{

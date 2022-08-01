@@ -1,6 +1,9 @@
 module "firefly" {
   source                = "../../"
-  firefly_access_key    = "FIREFLY_ACCESS_KEY"
-  firefly_secret_key    = "FIREFLY_SECRET_KEY"
-  name                  = "AWS_INTEGRATION"
-}
+  firefly_access_key    = var.firefly_access_key
+  firefly_secret_key    = var.firefly_secret_key
+  name                  = "firefly rnd eventdriven"
+  firefly_endpoint = "https://stagapi.gofirefly.io/api"
+  is_event_driven = true
+  role_external_id      = "MC4zMzk5MjQ0Mzg4MDM0NzgzMw"
+} 

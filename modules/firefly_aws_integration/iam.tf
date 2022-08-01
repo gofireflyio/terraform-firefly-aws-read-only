@@ -180,64 +180,54 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
   })
 }
 
-resource "aws_iam_policy" "firefly_lambda_premissions" {
-  name        = "fireflyLambda"
+resource "aws_iam_policy" "firefly_eventbridge_permission" {
+  name        = "firefly-event-driven-rules"
   path        = "/"
-  description = "permission to invoke for the firefly lambda"
+  description = "permission to put eventbridge rules"
 
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
         {
           "Action": [
-            "kms:Decrypt"
+            "events:*"
           ],
           "Effect": "Allow",
-          "Resource": "arn:aws:lambda:*:${local.account_id}:function/event_driven_firefly"
+          "Resource": "arn:aws:events:*:${local.account_id}:rule/[firefly-event-driven/]firefly-events-*"
         }
     ]
   })
 }
 
 resource "aws_iam_role" "firefly_cross_account_access_role" {
-  name = "firefly-caa-role"
+  name = "firefly-caa-role-stablefly"
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
-      {
+     {
         "Action" : "sts:AssumeRole",
         "Principal" : {
           "AWS" : "arn:aws:iam::${local.organizationID}:root"
         },
-        "Effect" : "Allow"
+        "Effect" : "Allow",
+        "Condition": {
+          "StringEquals": {
+            "sts:ExternalId": var.role_external_id
+          }
+        }
       }
     ]
   })
   managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
                          "arn:aws:iam::aws:policy/ReadOnlyAccess",
                          aws_iam_policy.firefly_readonly_policy_deny_list.arn,
-                         aws_iam_policy.firefly_lambda_premissions.arn,
+                         aws_iam_policy.firefly_eventbridge_permission.arn,
                          aws_iam_policy.firefly_s3_specific_read_permission.arn]
 
 }
 
-resource "aws_iam_role" "event_driven_firefly_role" {
-  count = var.event_driven ? 1 : 0
-  name = "firefly-event-driven-role"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
+module "eventbridge_rule_permission" {
+  count = var.event_driven ? 1 :0 
+  source = "./modules/eventbridge_rule_permission"
+  target_event_bus_arn = var.target_event_bus_arn
 }

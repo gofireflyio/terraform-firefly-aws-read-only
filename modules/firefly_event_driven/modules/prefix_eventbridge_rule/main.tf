@@ -1,12 +1,11 @@
-data "aws_lambda_function" "event_driven_firefly_lambda" {
-  function_name = var.event_driven_firefly_lambda_name
-}
-
-resource "aws_cloudwatch_event_rule" "prefix_rule" {
-  name        = "firefly-events-${var.service}"
-  description = "${var.service} Cloud Trail to Firefly collection lambda"
-
-  event_pattern = jsonencode({
+module "rule" {
+  count =  contains(var.service_regions, var.running_region) ? 1 : 0
+  source = "../rule"
+  service = var.service
+  rule_name = var.rule_name
+  target_event_bus_arn = var.target_event_bus_arn
+  role_arn = var.role_arn
+  event_pattarn = jsonencode({
     "source" : ["aws.${var.service}"],
     "detail" : {
       "eventName" : [
@@ -16,10 +15,4 @@ resource "aws_cloudwatch_event_rule" "prefix_rule" {
       ]
     }
   })
-}
-
-resource "aws_cloudwatch_event_target" "target" {
-  rule      = aws_cloudwatch_event_rule.prefix_rule.name
-  target_id = "SendToLambda"
-  arn       = data.aws_lambda_function.event_driven_firefly_lambda.arn
 }

@@ -4,75 +4,26 @@ locals {
   account_id = data.aws_caller_identity.current.account_id
 }
 
-data "aws_iam_role" "event_driven_role" {
-  name = var.eventdriven_role_name
-}
-
-resource "aws_ssm_parameter" "FireflyToken" {
-  name        = "FireflyToken"
-  description = "SSM Parameter for firefly token."
-  type        = "String"
-  value       = "token"
-  data_type   = "text"
-  overwrite   = true
-}
-
-resource "aws_lambda_function" "event_driven_firefly_lambda" {
-  function_name = var.lambda_name
-  role          = data.aws_iam_role.event_driven_role.arn
-
-  image_uri    = "094724549126.dkr.ecr.${var.region}.amazonaws.com/aws_event_extractor:latest"
-  package_type = "Image"
-
-  timeout     = 120
-  memory_size = 128
-
-  environment {
-    variables = var.lambda_environment_variables
-  }
-
-  tracing_config {
-    mode = "PassThrough"
-  }
-}
-
-resource "aws_lambda_permission" "cloud_watch_can_trigger_premission_service_event" {
-  statement_id  = "cloud-watch-can-trigger-premission-event-rule"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.event_driven_firefly_lambda.function_name
-  principal     = "events.amazonaws.com"
-  source_arn    = "arn:aws:events:${var.region}:096103536687:rule/firefly-events-*"
-}
-
-resource "aws_cloudwatch_log_group" "event_driven_firefly_log_group" {
-  name              = "/aws/lambda/${var.region}_event_driven_firefly"
-  retention_in_days = 30
-}
-
-resource "aws_lambda_permission" "cloud_watch_can_trigger_premission_account" {
-  statement_id   = "cloud-watch-can-trigger-premission-event-account"
-  action         = "lambda:InvokeFunction"
-  function_name  = aws_lambda_function.event_driven_firefly_lambda.function_name
-  principal      = "logs.${var.region}.amazonaws.com"
-  source_account = local.account_id
-}
-
 module "rule" {
     source = "./modules/eventbridge_rule"
-    for_each = var.actions
-    service = each.key
+    for_each = {for action in local.actions : action.rule-name => action}
+    service = each.value["service"]
+    rule_name = each.value["rule-name"]
     rules = each.value["rules"]
     running_region = var.region
     service_regions = each.value["regions"]
-    event_driven_firefly_lambda_name = aws_lambda_function.event_driven_firefly_lambda.function_name
+    target_event_bus_arn = var.target_event_bus_arn
+    role_arn = var.role_arn
 } 
 
 module "prefix_rule" {
     source = "./modules/prefix_eventbridge_rule"
-    for_each = var.prefix_actions
-    service = each.key
+    for_each = {for action in local.prefix_actions : action.rule-name => action}
+    service = each.value["service"]
+    rule_name = each.value["rule-name"]
     rules = each.value["rules"]
     running_region = var.region
     service_regions = each.value["regions"]
-    event_driven_firefly_lambda_name = aws_lambda_function.event_driven_firefly_lambda.function_name
-} 
+    target_event_bus_arn = var.target_event_bus_arn
+    role_arn = var.role_arn
+}
