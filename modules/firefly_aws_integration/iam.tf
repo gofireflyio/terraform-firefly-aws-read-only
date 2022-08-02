@@ -193,7 +193,7 @@ resource "aws_iam_policy" "firefly_eventbridge_permission" {
             "events:*"
           ],
           "Effect": "Allow",
-          "Resource": "arn:aws:events:*:${local.account_id}:rule/[firefly-event-driven/]firefly-events-*"
+          "Resource": "arn:aws:events:*:${local.account_id}:rule/firefly-events-*"
         }
     ]
   })
