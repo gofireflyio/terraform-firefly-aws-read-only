@@ -181,7 +181,7 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
 }
 
 resource "aws_iam_policy" "firefly_eventbridge_permission" {
-  name        = "firefly-event-driven-rules"
+  name        = "fireflyEventDrivenRulesPermission"
   path        = "/"
   description = "permission to put eventbridge rules"
 
