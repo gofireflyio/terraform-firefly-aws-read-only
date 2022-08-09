@@ -15,15 +15,3 @@ module "rule" {
     target_event_bus_arn = var.target_event_bus_arn
     role_arn = var.role_arn
 } 
-
-module "prefix_rule" {
-    source = "./modules/prefix_eventbridge_rule"
-    for_each = {for action in local.prefix_actions : action.rule-name => action}
-    service = each.value["service"]
-    rule_name = each.value["rule-name"]
-    rules = each.value["rules"]
-    running_region = var.region
-    service_regions = each.value["regions"]
-    target_event_bus_arn = var.target_event_bus_arn
-    role_arn = var.role_arn
-}

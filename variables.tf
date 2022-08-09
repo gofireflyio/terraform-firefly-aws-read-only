@@ -54,5 +54,31 @@ variable "target_event_bus_arn"{
 }
 
 variable "role_arn"{
+  default = ""
+  type = string
+}
+
+variable "profile"{
+  default = ""
+  type = string
+}
+
+variable "external_id"{
+  default= ""
+  type = string
+}
+
+variable "access_key"{
+  default= ""
+  type = string
+}
+
+variable "secret_key"{
+  default= ""
+  type = string
+}
+
+variable "session_name"{
+  default = "firefly"
   type = string
 }

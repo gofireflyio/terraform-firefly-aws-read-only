@@ -1179,6 +1179,9 @@ locals {
             "AttachInternetGateway",
             "AttachVolume",
             "AttachVpnGateway",
+            "AuthorizeClientVpnIngress",
+            "AuthorizeSecurityGroupEgress",
+            "AuthorizeSecurityGroupIngress",
             "BundleInstance",
             "CreateCapacityReservation",
             "CreateCapacityReservationFleet",
@@ -1226,10 +1229,7 @@ locals {
             "CreateTrafficMirrorFilterRule",
             "CreateTrafficMirrorSession",
             "CreateTrafficMirrorTarget",
-            "CreateTransitGateway",
-            "CreateTransitGatewayConnect",
-            "CreateTransitGatewayConnectPeer",
-            "CreateTransitGatewayMulticastDomain"
+            "CreateTransitGateway"
         ],
         "service": "ec2"
     },
@@ -1259,6 +1259,9 @@ locals {
         ],
         "rule-name": "ec2-2",
         "rules": [
+            "CreateTransitGatewayConnect",
+            "CreateTransitGatewayConnectPeer",
+            "CreateTransitGatewayMulticastDomain",
             "CreateTransitGatewayPeeringAttachment",
             "CreateTransitGatewayPrefixListReference",
             "CreateTransitGatewayRoute",
@@ -1319,10 +1322,7 @@ locals {
             "DeleteTransitGatewayRouteTable",
             "DeleteTransitGatewayVpcAttachment",
             "DeleteVolume",
-            "DeleteVpc",
-            "DeleteVpcEndpointConnectionNotifications",
-            "DeleteVpcEndpointServiceConfigurations",
-            "DeleteVpcEndpoints"
+            "DeleteVpc"
         ],
         "service": "ec2"
     },
@@ -1352,6 +1352,9 @@ locals {
         ],
         "rule-name": "ec2-3",
         "rules": [
+            "DeleteVpcEndpointConnectionNotifications",
+            "DeleteVpcEndpointServiceConfigurations",
+            "DeleteVpcEndpoints",
             "DeleteVpcPeeringConnection",
             "DeleteVpnConnection",
             "DeleteVpnConnectionRoute",
@@ -1404,11 +1407,7 @@ locals {
             "ImportKeyPair",
             "ImportSnapshot",
             "ImportVolume",
-            "ModifyAddressAttribute",
-            "ModifyAvailabilityZoneGroup",
-            "ModifyCapacityReservation",
-            "ModifyCapacityReservationFleet",
-            "ModifyClientVpnEndpoint"
+            "ModifyAddressAttribute"
         ],
         "service": "ec2"
     },
@@ -1438,6 +1437,10 @@ locals {
         ],
         "rule-name": "ec2-4",
         "rules": [
+            "ModifyAvailabilityZoneGroup",
+            "ModifyCapacityReservation",
+            "ModifyCapacityReservationFleet",
+            "ModifyClientVpnEndpoint",
             "ModifyDefaultCreditSpecification",
             "ModifyEbsDefaultKmsKeyId",
             "ModifyFleet",
@@ -1495,11 +1498,7 @@ locals {
             "ReplaceRouteTableAssociation",
             "ReplaceTransitGatewayRoute",
             "ResetAddressAttribute",
-            "ResetEbsDefaultKmsKeyId",
-            "ResetFpgaImageAttribute",
-            "ResetImageAttribute",
-            "ResetInstanceAttribute",
-            "ResetNetworkInterfaceAttribute"
+            "ResetEbsDefaultKmsKeyId"
         ],
         "service": "ec2"
     },
@@ -1529,6 +1528,10 @@ locals {
         ],
         "rule-name": "ec2-5",
         "rules": [
+            "ResetFpgaImageAttribute",
+            "ResetImageAttribute",
+            "ResetInstanceAttribute",
+            "ResetNetworkInterfaceAttribute",
             "ResetSnapshotAttribute",
             "RevokeClientVpnIngress",
             "RevokeSecurityGroupEgress",
@@ -1749,6 +1752,7 @@ locals {
         "rule-name": "elasticache",
         "rules": [
             "AddTagsToResource",
+            "AuthorizeCacheSecurityGroupIngress",
             "CreateCacheCluster",
             "CreateCacheParameterGroup",
             "CreateCacheSecurityGroup",
@@ -3135,7 +3139,6 @@ locals {
             "CreateLogGroup",
             "DeleteDestination",
             "DeleteLogGroup",
-            "DeleteLogStream",
             "DeleteMetricFilter",
             "DeleteQueryDefinition",
             "DeleteResourcePolicy",
@@ -3704,6 +3707,7 @@ locals {
             "AddSourceIdentifierToSubscription",
             "AddTagsToResource",
             "ApplyPendingMaintenanceAction",
+            "AuthorizeDBSecurityGroupIngress",
             "BacktrackDBCluster",
             "CreateCustomAvailabilityZone",
             "CreateCustomDBEngineVersion",
@@ -3832,6 +3836,10 @@ locals {
         "rules": [
             "AddPartner",
             "AssociateDataShareConsumer",
+            "AuthorizeClusterSecurityGroupIngress",
+            "AuthorizeDataShare",
+            "AuthorizeEndpointAccess",
+            "AuthorizeSnapshotAccess",
             "CreateAuthenticationProfile",
             "CreateCluster",
             "CreateClusterParameterGroup",
@@ -4016,7 +4024,8 @@ locals {
             "us-east-1",
             "us-east-2",
             "us-west-1",
-            "us-west-2"
+            "us-west-2",
+            "aws-global"
         ],
         "rule-name": "s3",
         "rules": [
@@ -5352,6 +5361,7 @@ locals {
         "rules": [
             "AssociateConnectionAlias",
             "AssociateIpGroups",
+            "AuthorizeIpRules",
             "CreateConnectionAlias",
             "CreateIpGroup",
             "CreateTags",
@@ -5421,9 +5431,7 @@ locals {
             "UpdateSamplingRule"
         ],
         "service": "xray"
-    }
-]
-prefix_actions = [
+    },
     {
     "rule-name": "lambda"
     "service": "lambda",
@@ -5443,6 +5451,4 @@ prefix_actions = [
       "eu-west-3", "me-south-1", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"
     ]
   }
-  ]
-}
-
+]
