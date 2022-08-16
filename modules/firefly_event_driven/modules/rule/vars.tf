@@ -14,6 +14,6 @@ variable "target_event_bus_arn"{
   type = string
 }
 
-variable "role_arn"{
+variable "eventbridge_role_arn"{
   type = string
 }

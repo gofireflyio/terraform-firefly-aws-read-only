@@ -1,7 +1,3 @@
-provider "aws" {
-  alias      = "us_west_1"
-  region     = "us-west-1"
-}
 
 data "terracurl_request" "firefly_login" {
   name           = "firefly_aws_integration"
@@ -31,7 +27,7 @@ resource "time_sleep" "wait_10_seconds" {
   create_duration = "10s"
 }
 
-resource "terracurl_request" "firefly_aws_integration" {
+resource "terracurl_request" "firefly_aws_integration_request" {
   name           = "firefly aws provider integration"
   url            = "${var.firefly_endpoint}/integrations/aws/"
   method         = "POST"
@@ -50,7 +46,13 @@ resource "terracurl_request" "firefly_aws_integration" {
     Authorization: "Bearer ${jsondecode(data.terracurl_request.firefly_login.response).access_token}"
   }
 
-  response_codes = [200]
+  lifecycle {
+      ignore_changes = [
+        headers,
+        destroy_headers
+      ]
+  }
+  response_codes = [200, 409]
 
   destroy_url    = "${var.firefly_endpoint}/integrations/aws/integration/name"
   destroy_method = "DELETE"

@@ -44,3 +44,8 @@ variable "role_external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
 }
+
+variable "role_name"{
+  type        = string
+  description = "The name for the Firefly role generated"
+}

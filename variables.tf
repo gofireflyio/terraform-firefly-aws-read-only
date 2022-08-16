@@ -30,6 +30,17 @@ variable is_prod {
   description = "Is Production?"
 }
 
+variable exist_integration {
+  type        = bool
+  default     = false
+  description = "Whether the integration exists or not"
+}
+
+variable "firefly_role_name"{
+  default = "firefly-caa-role"
+  type = string
+}
+
 variable full_scan_enabled {
   type        = bool
   default     = true
@@ -51,11 +62,6 @@ variable event_driven_regions {
 variable "target_event_bus_arn"{
   type = string
   default = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
-}
-
-variable "role_arn"{
-  default = ""
-  type = string
 }
 
 variable "profile"{

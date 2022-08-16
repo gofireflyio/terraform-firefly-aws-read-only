@@ -4024,8 +4024,7 @@ locals {
             "us-east-1",
             "us-east-2",
             "us-west-1",
-            "us-west-2",
-            "aws-global"
+            "us-west-2"
         ],
         "rule-name": "s3",
         "rules": [
@@ -5431,20 +5430,12 @@ locals {
             "UpdateSamplingRule"
         ],
         "service": "xray"
-    },
-    {
+    }
+]
+serviceWithoutActions=[
+ {
     "rule-name": "lambda"
     "service": "lambda",
-    "rules":[
-        "AddLayerVersionPermission", "AddPermission", "CreateAlias", "CreateCodeSigningConfig",
-        "CreateEventSourceMapping", "CreateFunction", "DeleteAlias", "DeleteCodeSigningConfig",
-        "DeleteEventSourceMapping", "DeleteFunction", "DeleteFunctionCodeSigningConfig", "DeleteFunctionConcurrency",
-        "DeleteFunctionEventInvokeConfig", "DeleteLayerVersion", "DeleteProvisionedConcurrencyConfig",
-        "PutFunctionCodeSigningConfig", "PutFunctionConcurrency", "PutFunctionEventInvokeConfig",
-        "PutProvisionedConcurrencyConfig", "RemoveLayerVersionPermission", "RemovePermission", "UpdateAlias",
-        "UpdateCodeSigningConfig", "UpdateEventSourceMapping", "UpdateFunctionCode", "UpdateFunctionConfiguration",
-        "UpdateFunctionEventInvokeConfig"
-    ],
     "regions" : [
       "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ap-south-1", "ap-southeast-1",
       "ap-southeast-2", "ca-central-1", "eu-central-1", "eu-north-1", "eu-south-1", "eu-west-1", "eu-west-2",
@@ -5452,3 +5443,4 @@ locals {
     ]
   }
 ]
+}

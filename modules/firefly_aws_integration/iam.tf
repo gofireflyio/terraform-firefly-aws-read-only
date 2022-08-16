@@ -180,27 +180,8 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
   })
 }
 
-resource "aws_iam_policy" "firefly_eventbridge_permission" {
-  name        = "fireflyEventDrivenRulesPermission"
-  path        = "/"
-  description = "permission to put eventbridge rules"
-
-  policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-          "Action": [
-            "events:*"
-          ],
-          "Effect": "Allow",
-          "Resource": "arn:aws:events:*:${local.account_id}:rule/firefly-events-*"
-        }
-    ]
-  })
-}
-
 resource "aws_iam_role" "firefly_cross_account_access_role" {
-  name = "firefly-caa-role-stablefly"
+  name = var.role_name
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -221,13 +202,6 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
   managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
                          "arn:aws:iam::aws:policy/ReadOnlyAccess",
                          aws_iam_policy.firefly_readonly_policy_deny_list.arn,
-                         aws_iam_policy.firefly_eventbridge_permission.arn,
                          aws_iam_policy.firefly_s3_specific_read_permission.arn]
 
-}
-
-module "eventbridge_rule_permission" {
-  count = var.event_driven ? 1 :0 
-  source = "./modules/eventbridge_rule_permission"
-  target_event_bus_arn = var.target_event_bus_arn
 }
