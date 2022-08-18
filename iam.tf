@@ -76,7 +76,6 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
             "chime:ListRoomMemberships",
             "codestar:Verify*",
             "cognito-sync:QueryRecords",
-            "config:Deliver*",
             "datapipeline:EvaluateExpression",
             "datapipeline:QueryObjects",
             "datapipeline:Validate*",
@@ -169,7 +168,8 @@ resource "aws_iam_policy" "firefly_s3_specific_write_permission" {
           "NotResource": [
             "arn:aws:s3:::*/*.tfstate",
             "arn:aws:s3:::elasticbeanstalk*/*",
-            "arn:aws:s3:::aws-emr-resources*/*"
+            "arn:aws:s3:::aws-emr-resources*/*",
+            "arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"
           ]
         },
     ]
