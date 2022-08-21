@@ -80,7 +80,6 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
             "chime:ListRoomMemberships",
             "codestar:Verify*",
             "cognito-sync:QueryRecords",
-            "config:Deliver*",
             "datapipeline:EvaluateExpression",
             "datapipeline:QueryObjects",
             "datapipeline:Validate*",
@@ -150,32 +149,38 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
   })
 }
 
+locals {
+  s3_objects         = [
+    "arn:aws:s3:::*/*.tfstate",
+    "arn:aws:s3:::elasticbeanstalk*/*",
+    "arn:aws:s3:::aws-emr-resources*/*"
+  ]
+  config_service_objects = ["arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"]
+  s3_objects_to_allow = var.use_config_service ?  concat(local.s3_objects, local.config_service_objects) : local.s3_objects
+}
+
 resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
   name        = "S3SpecificReadPermission"
   path        = "/"
   description = "Read only permission for the Specific S3 Buckets"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-          "Action": [
-            "kms:Decrypt"
-          ],
-          "Effect": "Allow",
-          "Resource": "arn:aws:kms:*:${local.account_id}:key/*"
-        },
-        {
-          "Action": [
-            "s3:GetObject"
-          ],
-          "Effect": "Deny",
-          "NotResource": [
-            "arn:aws:s3:::*/*.tfstate",
-            "arn:aws:s3:::elasticbeanstalk*/*",
-            "arn:aws:s3:::aws-emr-resources*/*"
-          ]
-        },
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : [
+          "kms:Decrypt"
+        ],
+        "Effect" : "Allow",
+        "Resource" : "arn:aws:kms:*:${local.account_id}:key/*"
+      },
+      {
+        "Action" : [
+          "s3:GetObject"
+        ],
+        "Effect" : "Deny",
+        "NotResource" : local.s3_objects_to_allow
+      },
     ]
   })
 }
