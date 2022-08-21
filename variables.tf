@@ -88,3 +88,9 @@ variable "session_name"{
   default = "firefly"
   type = string
 }
+
+variable "use_config_service" {
+  type = bool
+  default = true
+  description = "Allow Firefly to read the config service s3 objects"
+}

@@ -52,6 +52,4 @@ variable "role_name"{
 
 variable "use_config_service" {
   type = bool
-  default = true
-  description = "Allow Firefly to read the config service s3 objects"
 }

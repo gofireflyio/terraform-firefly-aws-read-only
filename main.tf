@@ -147,6 +147,7 @@ module "firefly_aws_integration" {
   full_scan_enabled = var.full_scan_enabled
   role_external_id = var.role_external_id
   role_name = var.firefly_role_name
+  use_config_service = var.use_config_service
   providers          = {
     aws = aws.us_east_1
   }
