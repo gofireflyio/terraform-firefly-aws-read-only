@@ -17,6 +17,7 @@ resource "aws_iam_policy" "firefly_readonly_policy_part2" {
           "config:GetOrganizationConfigRuleDetailedStatus",
           "config:GetOrganizationConformancePackDetailedStatus",
           "config:List*",
+          "config:DeliverConfigSnapshot",
           "connect:Describe*",
           "connect:List*",
           "cur:DescribeReportDefinitions",
