@@ -5,7 +5,7 @@ locals {
 }
 
 resource "aws_iam_policy" "firefly_eventbridge_permission" {
-  name        = "fireflyEventDrivenRulesPermission"
+  name        = "${var.env}-fireflyEventDrivenRulesPermission"
   path        = "/"
   description = "permission to put eventbridge rules"
 
@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "firefly_eventbridge_permissions" {
 }
 
 resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
-  name               = "event-bus-invoke-remote-event-bus"
+  name               = "${var.env}-event-bus-invoke-remote-event-bus"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "event_bus_invoke_remote_event_bus" {
 }
 
 resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
-  name   = "event_bus_invoke_remote_event_bus"
+  name   = "${var.env}-event_bus_invoke_remote_event_bus"
   policy = data.aws_iam_policy_document.event_bus_invoke_remote_event_bus.json
 }
 

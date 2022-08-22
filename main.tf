@@ -157,6 +157,7 @@ module "firefly_eventbridge_permissions" {
   source = "./modules/eventbridge_permissions"
   target_event_bus_arn = var.target_event_bus_arn
   firefly_role_name = var.firefly_role_name
+  env    = var.name
   depends_on = [
     module.firefly_aws_integration
   ]

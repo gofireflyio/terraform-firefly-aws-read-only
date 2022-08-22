@@ -17,3 +17,7 @@ variable "target_event_bus_arn"{
 variable "eventbridge_role_arn"{
   type = string
 }
+
+variable "env"{
+  type = string
+}
