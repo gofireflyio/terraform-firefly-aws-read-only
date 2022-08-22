@@ -5,7 +5,7 @@ locals {
 }
 
 resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
-  name        = var.firefly_deny_list_policy_name
+  name        = "${var.name}-var.firefly_deny_list_policy_name"
   path        = "/"
   description = "Read only permission for the cloud configuration - Deny List"
 
@@ -160,7 +160,7 @@ locals {
 }
 
 resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
-  name        = "S3SpecificReadPermission"
+  name        = "${var.name}-S3SpecificReadPermission"
   path        = "/"
   description = "Read only permission for the Specific S3 Buckets"
 

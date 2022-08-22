@@ -5,3 +5,7 @@ variable "target_event_bus_arn"{
 variable "firefly_role_name"{
   type = string
 }
+
+variable "env"{
+  type = string
+}

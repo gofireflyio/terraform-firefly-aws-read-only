@@ -5,6 +5,7 @@ module "rule" {
   rule_name = var.rule_name
   target_event_bus_arn = var.target_event_bus_arn
   eventbridge_role_arn = var.eventbridge_role_arn
+  env = var.env
   event_pattarn = jsonencode({
     "source" : ["aws.${var.service}"],
     "detail" : {
