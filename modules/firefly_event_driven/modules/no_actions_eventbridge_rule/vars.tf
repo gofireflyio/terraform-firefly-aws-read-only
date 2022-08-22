@@ -21,3 +21,7 @@ variable "service_regions"{
 variable "eventbridge_role_arn"{
   type = string
 }
+
+variable "env"{
+  type = string
+}
