@@ -38,6 +38,7 @@ resource "terracurl_request" "firefly_aws_integration_request" {
       "externalId"= var.role_external_id,
       "fullScanEnabled"= var.full_scan_enabled,
       "isProd"= var.is_prod
+      "isEventDriven" = var.event_driven
     }
   )
 

@@ -33,7 +33,7 @@ variable is_prod {
 variable exist_integration {
   type        = bool
   default     = false
-  description = "Whether the integration exists or not"
+  description = "Whether the integration already exists or not"
 }
 
 variable "firefly_role_name"{
