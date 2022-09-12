@@ -1540,7 +1540,7 @@ locals {
             "RunScheduledInstances",
             "TerminateInstances",
             "UnassignIpv6Addresses",
-            "UnassignPrivateIpAddresses",
+            # "UnassignPrivateIpAddresses",
             "UnmonitorInstances",
             "UpdateSecurityGroupRuleDescriptionsEgress",
             "UpdateSecurityGroupRuleDescriptionsIngress"

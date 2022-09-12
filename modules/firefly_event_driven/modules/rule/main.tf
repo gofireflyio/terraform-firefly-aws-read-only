@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "rule" {
   name        = "firefly-events-${var.rule_name}"
-  description = "${var.service} Cloud Trail to Firefly collection lambda"
+  description = "${var.service} Cloud Trail to Firefly event bus"
   event_pattern = var.event_pattarn
 }
 
