@@ -50,6 +50,7 @@ module "firefly-read-only" {
 }
 ```
 
+### Remove Event Driven from Existing Integration
 In order to remove event-driven for an existing integration just call the module with:
 ```
 is_event_driven = false
