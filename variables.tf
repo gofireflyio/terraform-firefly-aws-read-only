@@ -101,6 +101,6 @@ variable "buckets_by_region" {
 }
 
 variable "iac_events_sns" {
-  default     = "arn:aws:sns:us-east-1:094724549126:tfstate-s3-updates"
+  default     = "arn:aws:sns:us-east-1:094724549126:firefly-iac-states-update-topic"
   description = "Firefly sns which receives s3 object events notification"
 }
