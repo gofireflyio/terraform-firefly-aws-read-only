@@ -30,6 +30,7 @@ module "firefly-read-only" {
   is_prod               = false/true
 }
 ```
+<<<<<<< HEAD
 
 ### Installation with Event Driven
 
@@ -56,3 +57,5 @@ In order to remove event-driven for an existing integration just call the module
 is_event_driven = false
 exist_integration = true
 ```
+=======
+>>>>>>> main
