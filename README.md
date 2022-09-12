@@ -56,3 +56,14 @@ In order to remove event-driven for an existing integration just call the module
 is_event_driven = false
 exist_integration = true
 ```
+
+
+### Optional
+Aws credentials will be default unless adding one of the following params to the configuration:
+```
+profile = "YOUR_PROFILE"
+OR 
+access_key = "YOUR_AWS_ACCESS_KEY"
+secret_key = "YOUR_SECRET_KEY"
+
+```
