@@ -25,7 +25,7 @@ provider "aws" {
 module "firefly-read-only" {
   source              = "gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key  = "YOUR_ACCESS_KEY"
-  fierfly_secret_key  = "YOUR_SECRET_KEY"
+  firefly_secret_key  = "YOUR_SECRET_KEY"
   role_external_id    = "YOUR_EXTERNAL_ID"
   is_prod               = false/true
 }
