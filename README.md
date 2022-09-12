@@ -59,11 +59,12 @@ exist_integration = true
 
 
 ### Optional
-Aws credentials will be default unless adding one of the following params to the configuration:
+AWS credentials will be default unless adding one of the following params to the configuration:
 ```
 profile = "YOUR_PROFILE"
-OR 
+```
+OR
+```
 access_key = "YOUR_AWS_ACCESS_KEY"
 secret_key = "YOUR_SECRET_KEY"
-
 ```
