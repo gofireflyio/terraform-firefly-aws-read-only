@@ -50,16 +50,16 @@ module "firefly-read-only" {
 }
 ```
 
+### Add Event Driven to Existing Integration
+In order to install event-driven for an existing firefly integration just call the module with:
+```
+exist_integration = true
+```
+
 ### Remove Event Driven from Existing Integration
 In order to remove event-driven for an existing integration just call the module with:
 ```
 is_event_driven = false
-exist_integration = true
-```
-
-### Add Event Driven to Existing Firefly Integration
-In order to install event-driven for an existing firefly integration just call the module with:
-```
 exist_integration = true
 ```
 
