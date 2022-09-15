@@ -15,7 +15,7 @@ variable "sns_arn"{
 
 variable "suffix"{
   type = string
-  default = ".tfstate"
+  default = "tfstate"
   description = "The s3 object extension to produce notifications from"
 }
 
