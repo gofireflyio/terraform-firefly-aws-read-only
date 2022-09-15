@@ -21,7 +21,7 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
         ],
         "Effect" : "Allow",
         "Resource" : [
-          "arn:aws:s3:::*/*.tfstate"
+          "arn:aws:s3:::*/*tfstate"
         ]
       },
       {
@@ -30,7 +30,7 @@ resource "aws_iam_policy" "firefly_s3_specific_read_permission" {
         ],
         "Effect" : "Allow",
         "Resource" : [
-          "arn:aws:s3:::*/*.tfstate",
+          "arn:aws:s3:::*/*tfstate",
           "arn:aws:s3:::elasticbeanstalk*/*",
           "arn:aws:s3:::aws-emr-resources*/*",
           "arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"
