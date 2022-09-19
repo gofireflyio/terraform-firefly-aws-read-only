@@ -1,4 +1,5 @@
 resource "aws_s3_bucket_notification" "aws_events_bucket_notification" {
+  name = "firefly-iac-states-update-notification"
   for_each = toset(var.bucket_names)
   bucket = each.key
   topic {
