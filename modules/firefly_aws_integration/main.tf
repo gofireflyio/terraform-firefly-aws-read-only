@@ -47,10 +47,11 @@ resource "terracurl_request" "firefly_aws_integration_request" {
     Authorization: "Bearer ${jsondecode(data.terracurl_request.firefly_login.response).access_token}"
   }
 
-  lifecycle {
+   lifecycle {
       ignore_changes = [
         headers,
-        destroy_headers
+        destroy_headers,
+        request_body
       ]
   }
   response_codes = [200, 409]
