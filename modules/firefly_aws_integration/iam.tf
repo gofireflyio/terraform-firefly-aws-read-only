@@ -5,7 +5,7 @@ locals {
 }
 
 resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
-  name        = "FireflyReadonlyPolicyDenyList"
+  name        = var.firefly_deny_list_policy_name
   path        = "/"
   description = "Read only permission for the cloud configuration - Deny List"
 
