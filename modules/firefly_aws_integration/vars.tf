@@ -50,6 +50,11 @@ variable "role_name"{
   description = "The name for the Firefly role generated"
 }
 
+variable "firefly_deny_list_policy_name"{
+  type        = string
+  description = "The name for the Firefly deny policy generated"
+}
+
 variable "use_config_service" {
   type = bool
   default = true

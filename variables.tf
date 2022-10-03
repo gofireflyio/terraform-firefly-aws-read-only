@@ -41,6 +41,12 @@ variable "firefly_role_name" {
   type    = string
 }
 
+variable "firefly_deny_list_policy_name" {
+  type        = string
+  description = "The name for the Firefly deny policy generated"
+  default     = "FireflyReadonlyPolicyDenyList"
+}
+
 variable full_scan_enabled {
   type        = bool
   default     = true
@@ -103,4 +109,17 @@ variable "buckets_by_region" {
 variable "iac_events_sns" {
   default     = "arn:aws:sns:us-east-1:094724549126:firefly-iac-states-update-topic"
   description = "Firefly sns which receives s3 object events notification"
+}
+
+variable "use_config_service" {
+  type        = bool
+  default     = false
+  description = "Allow Firefly to read the config service s3 objects"
+}
+
+
+variable "config_service_regions" {
+  type        = list(string)
+  description = "The list of regions to install firefly event driven in"
+  default     = []
 }
