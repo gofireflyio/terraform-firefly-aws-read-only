@@ -47,7 +47,7 @@ EOF
 }
 
 resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
-  name   = "${var.env}-event_bus_invoke_remote_event_bus"
+  name   = "event_bus_invoke_remote_event_bus"
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
