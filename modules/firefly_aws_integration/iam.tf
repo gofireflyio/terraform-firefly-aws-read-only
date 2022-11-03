@@ -204,9 +204,24 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
       }
     ]
   })
-  managed_policy_arns = ["arn:aws:iam::aws:policy/SecurityAudit",
-                         "arn:aws:iam::aws:policy/ReadOnlyAccess",
-                         aws_iam_policy.firefly_readonly_policy_deny_list.arn,
-                         aws_iam_policy.firefly_s3_specific_read_permission.arn]
+}
 
+resource "aws_iam_role_policy_attachment" "firefly_readonly_policy_deny_list" {
+  role       = aws_iam_role.firefly_cross_account_access_role.name
+  policy_arn = aws_iam_policy.firefly_readonly_policy_deny_list.arn
+}
+
+resource "aws_iam_role_policy_attachment" "firefly_s3_specific_read_permission" {
+  role       = aws_iam_role.firefly_cross_account_access_role.name
+  policy_arn = aws_iam_policy.firefly_s3_specific_read_permission.arn
+}
+
+resource "aws_iam_role_policy_attachment" "firefly_readonly_access" {
+  role       = aws_iam_role.firefly_cross_account_access_role.name
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "firefly_security_audit" {
+  role       = aws_iam_role.firefly_cross_account_access_role.name
+  policy_arn = "arn:aws:iam::aws:policy/SecurityAudit"
 }

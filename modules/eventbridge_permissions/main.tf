@@ -46,17 +46,20 @@ resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
 EOF
 }
 
-data "aws_iam_policy_document" "event_bus_invoke_remote_event_bus" {
-  statement {
-    effect    = "Allow"
-    actions   = ["events:PutEvents"]
-    resources = [var.target_event_bus_arn]
-  }
-}
-
 resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
-  name   = "event_bus_invoke_remote_event_bus"
-  policy = data.aws_iam_policy_document.event_bus_invoke_remote_event_bus.json
+  name   = "${var.env}-event_bus_invoke_remote_event_bus"
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+          "Action": [
+            "events:PutEvents"
+          ],
+          "Effect": "Allow",
+          "Resource": var.target_event_bus_arn
+        }
+    ]
+  })
 }
 
 resource "aws_iam_role_policy_attachment" "event_bus_invoke_remote_event_bus" {
