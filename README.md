@@ -23,7 +23,7 @@ provider "aws" {
 
 
 module "firefly-read-only" {
-  source              = "https://github.com/gofireflyio/terraform-firefly-aws-read-only"
+  source              = "github.com/gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key  = "YOUR_ACCESS_KEY"
   firefly_secret_key  = "YOUR_SECRET_KEY"
   role_external_id    = "YOUR_EXTERNAL_ID"
@@ -40,7 +40,7 @@ provider "aws" {
 
 
 module "firefly-read-only" {
-  source               = "https://github.com/gofireflyio/terraform-firefly-aws-read-only"
+  source               = "github.com/gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key   = "YOUR_ACCESS_KEY"
   firefly_secret_key   = "YOUR_SECRET_KEY"
   role_external_id     = "YOUR_EXTERNAL_ID"
@@ -59,7 +59,7 @@ provider "aws" {
 
 
 module "firefly-read-only" {
-  source               = "https://github.com/gofireflyio/terraform-firefly-aws-read-only"
+  source               = "github.com/gofireflyio/terraform-firefly-aws-read-only"
   firefly_access_key   = "YOUR_ACCESS_KEY"
   firefly_secret_key   = "YOUR_SECRET_KEY"
   role_external_id     = "YOUR_EXTERNAL_ID"
