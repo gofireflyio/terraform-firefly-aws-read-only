@@ -105,4 +105,5 @@ OR
 ```
 aws_assume_web_identity_role_arn = "YOUR_ROLE_ARN"
 aws_assume_web_identity_role_token = "YOUR_ROLE_TOKEN"
+OR
 aws_assume_web_identity_role_token_file = "YOUR_TOKEN_FILE"
