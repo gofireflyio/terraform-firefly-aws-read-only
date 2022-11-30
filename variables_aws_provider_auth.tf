@@ -1,28 +1,28 @@
-variable "aws_profile" {
+variable "profile" {
   description = "The aws profile to create aws provider with"
   default = ""
   type    = string
 }
 
-variable "aws_external_id" {
+variable "external_id" {
   description = "The aws external id to create aws provider with"
   default = ""
   type    = string
 }
 
-variable "aws_access_key" {
+variable "access_key" {
   description = "The aws access key to create aws provider with"
   default = ""
   type    = string
 }
 
-variable "aws_secret_key" {
+variable "secret_key" {
   description = "The aws secret key to create aws provider with"
   default = ""
   type    = string
 }
 
-variable "aws_session_name" {
+variable "session_name" {
   description = "The aws session name to create aws provider with"
   default = ""
   type    = string
