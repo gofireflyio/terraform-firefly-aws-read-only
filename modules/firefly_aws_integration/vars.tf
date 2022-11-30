@@ -36,6 +36,10 @@ variable "event_driven"{
   description = "Is event driven infrastructre installed?"
 }
 
+variable event_driven_regions {
+  type        = list(string)
+}
+
 variable "target_event_bus_arn"{
     type = string
 }
@@ -59,4 +63,7 @@ variable "use_config_service" {
   type = bool
   default = true
   description = "Allow Firefly to read the config service s3 objects"
+}
+variable terraform_create_rules {
+  type        = bool
 }

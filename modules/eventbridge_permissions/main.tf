@@ -28,6 +28,8 @@ resource "aws_iam_role_policy_attachment" "firefly_eventbridge_permissions" {
   policy_arn = aws_iam_policy.firefly_eventbridge_permission.arn
 }
 
+
+// this role is dedicated for events service
 resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
   name               = "event-bus-invoke-remote-event-bus"
   assume_role_policy = <<EOF
@@ -57,6 +59,16 @@ resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
           ],
           "Effect": "Allow",
           "Resource": var.target_event_bus_arn
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:PassRole"
+          ],
+          "Resource": aws_iam_role.event_bus_invoke_remote_event_bus.arn,
+          "Condition": {
+                "StringEquals": {"iam:PassedToService": "events.amazonaws.com"}
+            }
         }
     ]
   })

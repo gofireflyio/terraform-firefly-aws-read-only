@@ -59,6 +59,12 @@ variable is_event_driven {
   description = "Install Event driven?"
 }
 
+variable terraform_create_rules {
+  type        = bool
+  default     = false
+  description = "Create eventbridge rules using terraform?"
+}
+
 variable event_driven_regions {
   type        = list(string)
   description = "The list of regions to install firefly event driven in"
@@ -72,6 +78,7 @@ variable event_driven_regions {
 
 variable "target_event_bus_arn" {
   type    = string
+  description = "The firefly event bus arn to put cloudtrail events in"
   default = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
 }
 

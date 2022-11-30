@@ -142,12 +142,14 @@ module "firefly_aws_integration" {
   name = var.name
   firefly_endpoint = var.firefly_endpoint
   event_driven = var.is_event_driven
+  event_driven_regions = var.event_driven_regions
   target_event_bus_arn = var.target_event_bus_arn
   is_prod = var.is_prod
   full_scan_enabled = var.full_scan_enabled
   role_external_id = var.role_external_id
   role_name = var.firefly_role_name
   firefly_deny_list_policy_name = var.firefly_deny_list_policy_name
+  terraform_create_rules = var.terraform_create_rules 
   providers          = {
     aws = aws.us_east_1
   }
@@ -166,8 +168,10 @@ module "firefly_eventbridge_permissions" {
   }
 }
 
+//create module to add event driven in exist integration using workflow (count = var.is_event_driven && var.is_event_driven && var.terraform_create_rules that will trigger )
+
 module "event_driven_ap_northeast_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-1"
@@ -183,7 +187,7 @@ module "event_driven_ap_northeast_1" {
 }
 
 module "event_driven_ap_northeast_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-2"
@@ -199,7 +203,7 @@ module "event_driven_ap_northeast_2" {
 }
 
 module "event_driven_ap_northeast_3" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-3") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-3") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-3"
@@ -215,7 +219,7 @@ module "event_driven_ap_northeast_3" {
 }
 
 module "event_driven_ap_south_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-south-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-south-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-south-1"
@@ -231,7 +235,7 @@ module "event_driven_ap_south_1" {
 }
 
 module "event_driven_ap_southeast_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-southeast-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-southeast-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-southeast-1"
@@ -247,7 +251,7 @@ module "event_driven_ap_southeast_1" {
 }
 
 module "event_driven_ap_southeast_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-southeast-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-southeast-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-southeast-2"
@@ -263,7 +267,7 @@ module "event_driven_ap_southeast_2" {
 }
 
 module "event_driven_ca_central_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ca-central-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ca-central-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ca-central-1"
@@ -279,7 +283,7 @@ module "event_driven_ca_central_1" {
 }
 
 module "event_driven_eu_central_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-central-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "eu-central-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-central-1"
@@ -295,7 +299,7 @@ module "event_driven_eu_central_1" {
 }
 
 module "event_driven_eu_north_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-north-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "eu-north-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-north-1"
@@ -311,7 +315,7 @@ module "event_driven_eu_north_1" {
 }
 
 module "event_driven_eu_west_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-1"
@@ -327,7 +331,7 @@ module "event_driven_eu_west_1" {
 }
 
 module "event_driven_eu_west_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-2"
@@ -343,7 +347,7 @@ module "event_driven_eu_west_2" {
 }
 
 module "event_driven_eu_west_3" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-3") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-3") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-3"
@@ -359,7 +363,7 @@ module "event_driven_eu_west_3" {
 }
 
 module "event_driven_sa_east_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "sa-east-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "sa-east-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "sa-east-1"
@@ -375,7 +379,7 @@ module "event_driven_sa_east_1" {
 }
 
 module "event_driven_us_east_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "us-east-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-east-1"
@@ -391,7 +395,7 @@ module "event_driven_us_east_1" {
 }
 
 module "event_driven_us_east_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "us-east-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-east-2"
@@ -407,7 +411,7 @@ module "event_driven_us_east_2" {
 }
 
 module "event_driven_us_west_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "us-west-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-west-1"
@@ -423,7 +427,7 @@ module "event_driven_us_west_1" {
 }
 
 module "event_driven_us_west_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && var.terraform_create_rules && contains(var.event_driven_regions, "us-west-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-west-2"
