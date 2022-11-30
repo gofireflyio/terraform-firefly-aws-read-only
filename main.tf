@@ -12,14 +12,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -36,14 +29,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -60,14 +46,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -84,14 +63,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -108,14 +80,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -132,14 +97,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -156,14 +114,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -180,14 +131,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -204,14 +148,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -228,14 +165,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -252,14 +182,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -276,14 +199,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -300,14 +216,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -324,14 +233,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -348,14 +250,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -372,14 +267,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 provider "aws" {
@@ -396,14 +284,7 @@ provider "aws" {
       external_id  = var.external_id
     }
   }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
+ 
 }
 
 module "firefly_aws_integration" {
