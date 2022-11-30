@@ -88,18 +88,18 @@ exist_integration = true
 ### Optional
 AWS credentials will be default unless adding one of the following params to the configuration:
 ```
-aws_profile = "YOUR_PROFILE"
+profile = "YOUR_PROFILE"
 ```
 OR
 ```
-aws_access_key = "YOUR_AWS_ACCESS_KEY"
-aws_secret_key = "YOUR_SECRET_KEY"
+access_key = "YOUR_AWS_ACCESS_KEY"
+secret_key = "YOUR_SECRET_KEY"
 ```
 OR
 ```
 aws_assume_role_arn = "YOUR_ROLE_ARN"
-aws_session_name = "YOUR_SESSION_NAME"
-aws_external_id = "YOUR_EXTERNAL_ID"
+session_name = "YOUR_SESSION_NAME"
+external_id = "YOUR_EXTERNAL_ID"
 ```
 OR
 ```
