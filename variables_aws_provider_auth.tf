@@ -1,4 +1,3 @@
-
 variable "aws_profile" {
   description = "The aws profile to create aws provider with"
   default = ""
@@ -42,19 +41,19 @@ variable "aws_assume_role_external_id" {
 }
 
 variable "aws_assume_web_identity_role_arn" {
-  description = "The aws assume role arn to create aws provider with"
+  description = "The aws assume web identity role arn to create aws provider with"
   default = ""
   type    = string
 }
 
 variable "aws_assume_web_identity_role_token" {
-  description = "The aws assume role external id to create aws provider with"
+  description = "Value of a web identity token from an OpenID Connect to create aws provider with"
   default = ""
   type    = string
 }
 
 variable "aws_assume_web_identity_role_token_file" {
-  description = "The aws assume role external id to create aws provider with"
+  description = "A File containing a web identity token from an OpenID Connect to create aws provider with"
   default = ""
   type    = string
 }
