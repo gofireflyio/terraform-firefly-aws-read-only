@@ -9,14 +9,14 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
@@ -33,18 +33,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -58,18 +58,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -83,18 +83,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -108,18 +108,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -133,18 +133,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -158,18 +158,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -183,18 +183,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -208,18 +208,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -233,18 +233,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -258,18 +258,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -283,18 +283,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -308,18 +308,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  =  var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 provider "aws" {
@@ -333,69 +333,69 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  = var.external_id == "" ? null : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
-provider "aws" {
-  alias      = "us_east_2"
-  region     = "us-east-2"
-  profile    = var.profile
-  access_key = var.access_key
-  secret_key = var.secret_key
-  dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn     = var.aws_assume_role_arn
-      session_name = var.session_name
-      external_id  = var.external_id
-    }
-  }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
- 
-}
+ provider "aws" {
+   alias      = "us_east_2"
+   region     = "us-east-2"
+   profile    = var.profile
+   access_key = var.access_key
+   secret_key = var.secret_key
+   dynamic assume_role {
+     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn     = var.aws_assume_role_arn
+       session_name = var.session_name
+       external_id  = var.external_id == "" ? null : var.external_id
+     }
+   }
+   dynamic assume_role_with_web_identity {
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn                = var.aws_assume_web_identity_role_arn
+       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+       web_identity_token_file = var.aws_assume_web_identity_role_token_file
+     }
+   }
 
-provider "aws" {
-  alias      = "us_west_1"
-  region     = "us-west-1"
-  profile    = var.profile
-  access_key = var.access_key
-  secret_key = var.secret_key
-  dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn     = var.aws_assume_role_arn
-      session_name = var.session_name
-      external_id  = var.external_id
-    }
-  }
-  dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
-    content {
-      role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
-      web_identity_token_file = var.aws_assume_web_identity_role_token_file
-    }
-  }
- 
-}
+ }
+
+ provider "aws" {
+   alias      = "us_west_1"
+   region     = "us-west-1"
+   profile    = var.profile
+   access_key = var.access_key
+   secret_key = var.secret_key
+   dynamic assume_role {
+     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn     = var.aws_assume_role_arn
+       session_name = var.session_name
+       external_id  =  var.external_id == "" ? null : var.external_id
+     }
+   }
+   dynamic assume_role_with_web_identity {
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn                = var.aws_assume_web_identity_role_arn
+       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+       web_identity_token_file = var.aws_assume_web_identity_role_token_file
+     }
+   }
+
+ }
 
 provider "aws" {
   alias      = "us_west_2"
@@ -408,18 +408,18 @@ provider "aws" {
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
-      external_id  = var.external_id
+      external_id  = var.external_id == "" ? "nothing" : var.external_id
     }
   }
   dynamic assume_role_with_web_identity {
     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
-      web_identity_token      = var.aws_assume_web_identity_role_token
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
       web_identity_token_file = var.aws_assume_web_identity_role_token_file
     }
   }
- 
+
 }
 
 module "firefly_aws_integration" {

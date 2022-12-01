@@ -24,7 +24,7 @@ variable "secret_key" {
 
 variable "session_name" {
   description = "The aws session name to create aws provider with"
-  default = ""
+  default = "firefly"
   type    = string
 }
 
