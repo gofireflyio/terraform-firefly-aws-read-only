@@ -18,7 +18,17 @@ resource "aws_iam_policy" "firefly_eventbridge_permission" {
           ],
           "Effect": "Allow",
           "Resource": "arn:aws:events:*:${local.account_id}:rule/firefly-events-*"
-        }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+              "iam:PassRole"
+            ],
+            "Resource": aws_iam_role.invoke_firefly_event_bus.arn,
+            "Condition": {
+                  "StringEquals": {"iam:PassedToService": "events.amazonaws.com"}
+              }
+          }
     ]
   })
 }
@@ -30,8 +40,8 @@ resource "aws_iam_role_policy_attachment" "firefly_eventbridge_permissions" {
 
 
 // this role is dedicated for events service
-resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
-  name               = "event-bus-invoke-remote-event-bus"
+resource "aws_iam_role" "invoke_firefly_event_bus" {
+  name               = "invoke-firefly-remote-event-bus"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -48,8 +58,8 @@ resource "aws_iam_role" "event_bus_invoke_remote_event_bus" {
 EOF
 }
 
-resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
-  name   = "event_bus_invoke_remote_event_bus"
+resource "aws_iam_policy" "invoke_firefly_event_bus" {
+  name   = "invoke-firefly-remote-event-bus"
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
@@ -59,22 +69,12 @@ resource "aws_iam_policy" "event_bus_invoke_remote_event_bus" {
           ],
           "Effect": "Allow",
           "Resource": var.target_event_bus_arn
-        },
-        {
-          "Effect": "Allow",
-          "Action": [
-            "iam:PassRole"
-          ],
-          "Resource": aws_iam_role.event_bus_invoke_remote_event_bus.arn,
-          "Condition": {
-                "StringEquals": {"iam:PassedToService": "events.amazonaws.com"}
-            }
         }
     ]
   })
 }
 
-resource "aws_iam_role_policy_attachment" "event_bus_invoke_remote_event_bus" {
-  role       = aws_iam_role.event_bus_invoke_remote_event_bus.name
-  policy_arn = aws_iam_policy.event_bus_invoke_remote_event_bus.arn
+resource "aws_iam_role_policy_attachment" "invoke_firefly_event_bus" {
+  role       = aws_iam_role.invoke_firefly_event_bus.name
+  policy_arn = aws_iam_policy.invoke_firefly_event_bus.arn
 }
