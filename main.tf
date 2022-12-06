@@ -142,14 +142,12 @@ module "firefly_aws_integration" {
   name = var.name
   firefly_endpoint = var.firefly_endpoint
   event_driven = var.is_event_driven
-  event_driven_regions = var.event_driven_regions
   target_event_bus_arn = var.target_event_bus_arn
   is_prod = var.is_prod
   full_scan_enabled = var.full_scan_enabled
   role_external_id = var.role_external_id
   role_name = var.firefly_role_name
   firefly_deny_list_policy_name = var.firefly_deny_list_policy_name
-  terraform_create_rules = var.terraform_create_rules 
   providers          = {
     aws = aws.us_east_1
   }
