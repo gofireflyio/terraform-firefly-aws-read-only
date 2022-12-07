@@ -154,7 +154,7 @@ module "firefly_aws_integration" {
 }
 
 module "firefly_eventbridge_permissions" {
-  count = var.is_event_driven ? 1 : 0
+  count = var.evntbridge_permissions ? 1 : 0
   source = "./modules/eventbridge_permissions"
   target_event_bus_arn = var.target_event_bus_arn
   firefly_role_name = var.firefly_role_name

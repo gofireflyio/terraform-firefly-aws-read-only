@@ -130,3 +130,10 @@ variable "config_service_regions" {
   description = "The list of regions to install firefly event driven in"
   default     = []
 }
+
+
+variable "evntbridge_permissions" {
+  type        = bool
+  default = true
+  description = "enable firefly eventbridge permissions"
+}
