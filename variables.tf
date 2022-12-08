@@ -61,7 +61,7 @@ variable is_event_driven {
 
 variable terraform_create_rules {
   type        = bool
-  default     = false
+  default     = true
   description = "Create eventbridge rules using terraform?"
 }
 
@@ -106,8 +106,7 @@ variable "config_service_regions" {
   default     = []
 }
 
-
-variable "evntbridge_permissions" {
+variable "enable_evntbridge_permissions" {
   type        = bool
   default = true
   description = "enable firefly eventbridge permissions"
