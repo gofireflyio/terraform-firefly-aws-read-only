@@ -1,4 +1,4 @@
-# Firefly AWS ReadOnly Integration (DEPRECATED - check terraform-firefly-aws-onboarding)
+# Firefly AWS ReadOnly Integration (DEPRECATED)
 # ![Firefly Logo](firefly.gif)
 
 ## Module contents
