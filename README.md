@@ -46,6 +46,7 @@ module "firefly-read-only" {
   role_external_id     = "YOUR_EXTERNAL_ID"
   is_prod              = false/true
   is_event_driven      = true
+  terraform_create_rules = false 
   event_driven_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
 }
 ```
@@ -65,6 +66,7 @@ module "firefly-read-only" {
   role_external_id     = "YOUR_EXTERNAL_ID"
   is_prod              = false/true
   is_event_driven      = true
+  terraform_create_rules = false
   event_driven_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
   use_config_service   = true
   config_service_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
@@ -95,3 +97,15 @@ OR
 access_key = "YOUR_AWS_ACCESS_KEY"
 secret_key = "YOUR_SECRET_KEY"
 ```
+OR
+```
+aws_assume_role_arn = "YOUR_ROLE_ARN"
+session_name = "YOUR_SESSION_NAME"
+external_id = "YOUR_EXTERNAL_ID"
+```
+OR
+```
+aws_assume_web_identity_role_arn = "YOUR_ROLE_ARN"
+aws_assume_web_identity_role_token = "YOUR_ROLE_TOKEN"
+OR
+aws_assume_web_identity_role_token_file = "YOUR_TOKEN_FILE"

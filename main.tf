@@ -1,137 +1,425 @@
 provider "aws" {
   alias      = "ap_northeast_1"
   region     = "ap-northeast-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
 }
 
 provider "aws" {
   alias      = "ap_northeast_2"
   region     = "ap-northeast-2"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "ap_northeast_3"
   region     = "ap-northeast-3"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "ap_south_1"
   region     = "ap-south-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "ap_southeast_1"
   region     = "ap-southeast-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "ap_southeast_2"
   region     = "ap-southeast-2"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "ca_central_1"
   region     = "ca-central-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "eu_central_1"
   region     = "eu-central-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "eu_north_1"
   region     = "eu-north-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "eu_west_1"
   region     = "eu-west-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "eu_west_2"
   region     = "eu-west-2"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "eu_west_3"
   region     = "eu-west-3"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "sa_east_1"
   region     = "sa-east-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  =  var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 provider "aws" {
   alias      = "us_east_1"
   region     = "us-east-1"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  = var.external_id == "" ? null : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
-provider "aws" {
-  alias      = "us_east_2"
-  region     = "us-east-2"
-  profile = var.profile  
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+ provider "aws" {
+   alias      = "us_east_2"
+   region     = "us-east-2"
+   profile    = var.profile
+   access_key = var.access_key
+   secret_key = var.secret_key
+   dynamic assume_role {
+     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn     = var.aws_assume_role_arn
+       session_name = var.session_name
+       external_id  = var.external_id == "" ? null : var.external_id
+     }
+   }
+   dynamic assume_role_with_web_identity {
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn                = var.aws_assume_web_identity_role_arn
+       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+       web_identity_token_file = var.aws_assume_web_identity_role_token_file
+     }
+   }
 
-provider "aws" {
-  alias      = "us_west_1"
-  region     = "us-west-1"
-  profile = var.profile  
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+ }
+
+ provider "aws" {
+   alias      = "us_west_1"
+   region     = "us-west-1"
+   profile    = var.profile
+   access_key = var.access_key
+   secret_key = var.secret_key
+   dynamic assume_role {
+     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn     = var.aws_assume_role_arn
+       session_name = var.session_name
+       external_id  =  var.external_id == "" ? null : var.external_id
+     }
+   }
+   dynamic assume_role_with_web_identity {
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     content {
+       role_arn                = var.aws_assume_web_identity_role_arn
+       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+       web_identity_token_file = var.aws_assume_web_identity_role_token_file
+     }
+   }
+
+ }
 
 provider "aws" {
   alias      = "us_west_2"
   region     = "us-west-2"
-  profile = var.profile  
+  profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  dynamic assume_role {
+    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn     = var.aws_assume_role_arn
+      session_name = var.session_name
+      external_id  = var.external_id == "" ? "nothing" : var.external_id
+    }
+  }
+  dynamic assume_role_with_web_identity {
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    content {
+      role_arn                = var.aws_assume_web_identity_role_arn
+      web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
+      web_identity_token_file = var.aws_assume_web_identity_role_token_file
+    }
+  }
+
 }
 
 module "firefly_aws_integration" {
@@ -154,7 +442,7 @@ module "firefly_aws_integration" {
 }
 
 module "firefly_eventbridge_permissions" {
-  count = var.is_event_driven ? 1 : 0
+  count = var.enable_evntbridge_permissions ? 1 : 0
   source = "./modules/eventbridge_permissions"
   target_event_bus_arn = var.target_event_bus_arn
   firefly_role_name = var.firefly_role_name
@@ -166,8 +454,24 @@ module "firefly_eventbridge_permissions" {
   }
 }
 
+// create eventbridge rules using workflow
+module "run_workflow" {
+  count = var.is_event_driven && !var.terraform_create_rules ? 1 : 0
+  source = "./modules/run_workflow"
+  firefly_secret_key = var.firefly_secret_key
+  firefly_access_key = var.firefly_access_key
+  name = var.name
+  firefly_endpoint = var.firefly_endpoint
+  events_role_arn = module.firefly_eventbridge_permissions[0].eventbridge_rule_role_arn
+  event_driven_regions = var.event_driven_regions
+  depends_on = [
+    module.firefly_aws_integration,
+    module.firefly_eventbridge_permissions
+  ]
+}
+
 module "event_driven_ap_northeast_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-1"
@@ -183,7 +487,7 @@ module "event_driven_ap_northeast_1" {
 }
 
 module "event_driven_ap_northeast_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-2"
@@ -199,7 +503,7 @@ module "event_driven_ap_northeast_2" {
 }
 
 module "event_driven_ap_northeast_3" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-northeast-3") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-northeast-3") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-northeast-3"
@@ -215,7 +519,7 @@ module "event_driven_ap_northeast_3" {
 }
 
 module "event_driven_ap_south_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-south-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-south-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-south-1"
@@ -231,7 +535,7 @@ module "event_driven_ap_south_1" {
 }
 
 module "event_driven_ap_southeast_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-southeast-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-southeast-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-southeast-1"
@@ -247,7 +551,7 @@ module "event_driven_ap_southeast_1" {
 }
 
 module "event_driven_ap_southeast_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ap-southeast-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-southeast-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ap-southeast-2"
@@ -263,7 +567,7 @@ module "event_driven_ap_southeast_2" {
 }
 
 module "event_driven_ca_central_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "ca-central-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ca-central-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "ca-central-1"
@@ -279,7 +583,7 @@ module "event_driven_ca_central_1" {
 }
 
 module "event_driven_eu_central_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-central-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "eu-central-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-central-1"
@@ -295,7 +599,7 @@ module "event_driven_eu_central_1" {
 }
 
 module "event_driven_eu_north_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-north-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "eu-north-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-north-1"
@@ -311,7 +615,7 @@ module "event_driven_eu_north_1" {
 }
 
 module "event_driven_eu_west_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-1"
@@ -327,7 +631,7 @@ module "event_driven_eu_west_1" {
 }
 
 module "event_driven_eu_west_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-2"
@@ -343,7 +647,7 @@ module "event_driven_eu_west_2" {
 }
 
 module "event_driven_eu_west_3" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "eu-west-3") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "eu-west-3") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "eu-west-3"
@@ -359,7 +663,7 @@ module "event_driven_eu_west_3" {
 }
 
 module "event_driven_sa_east_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "sa-east-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "sa-east-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "sa-east-1"
@@ -375,7 +679,7 @@ module "event_driven_sa_east_1" {
 }
 
 module "event_driven_us_east_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "us-east-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-east-1"
@@ -391,7 +695,7 @@ module "event_driven_us_east_1" {
 }
 
 module "event_driven_us_east_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-east-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "us-east-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-east-2"
@@ -407,7 +711,7 @@ module "event_driven_us_east_2" {
 }
 
 module "event_driven_us_west_1" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-1") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "us-west-1") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-west-1"
@@ -423,7 +727,7 @@ module "event_driven_us_west_1" {
 }
 
 module "event_driven_us_west_2" {
-  count = var.is_event_driven && contains(var.event_driven_regions, "us-west-2") ? 1 : 0
+  count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "us-west-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
   env    = var.name
   region = "us-west-2"

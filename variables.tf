@@ -59,6 +59,12 @@ variable is_event_driven {
   description = "Install Event driven?"
 }
 
+variable terraform_create_rules {
+  type        = bool
+  default     = true
+  description = "Create eventbridge rules using terraform?"
+}
+
 variable event_driven_regions {
   type        = list(string)
   description = "The list of regions to install firefly event driven in"
@@ -72,32 +78,8 @@ variable event_driven_regions {
 
 variable "target_event_bus_arn" {
   type    = string
+  description = "The firefly event bus arn to put cloudtrail events in"
   default = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
-}
-
-variable "profile" {
-  default = ""
-  type    = string
-}
-
-variable "external_id" {
-  default = ""
-  type    = string
-}
-
-variable "access_key" {
-  default = ""
-  type    = string
-}
-
-variable "secret_key" {
-  default = ""
-  type    = string
-}
-
-variable "session_name" {
-  default = "firefly"
-  type    = string
 }
 
 variable "buckets_by_region" {
@@ -122,4 +104,10 @@ variable "config_service_regions" {
   type        = list(string)
   description = "The list of regions to install firefly event driven in"
   default     = []
+}
+
+variable "enable_evntbridge_permissions" {
+  type        = bool
+  default = true
+  description = "enable firefly eventbridge permissions"
 }
