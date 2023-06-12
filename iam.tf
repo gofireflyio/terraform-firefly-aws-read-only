@@ -64,6 +64,7 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
     aws_iam_policy.firefly_readonly_policy_part5.arn,
     aws_iam_policy.firefly_readonly_policy_part6.arn,
     aws_iam_policy.firefly_readonly_policy_part7.arn,
+    aws_iam_policy.firefly_readonly_policy_part8.arn,
     aws_iam_policy.firefly_s3_specific_read_permission.arn
   ]
 
