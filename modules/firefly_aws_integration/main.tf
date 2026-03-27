@@ -56,13 +56,20 @@ resource "terracurl_request" "firefly_aws_integration_request" {
   }
   response_codes = [200, 409]
 
-  destroy_url    = "https://www.google.com"
-  destroy_method = "GET"
+  destroy_url    = "${var.firefly_endpoint}/integrations/aws/integration/name"
+  destroy_method = "DELETE"
 
-  destroy_headers = {}
+  destroy_headers = {
+    Content-Type = "application/json"
+    Authorization: "Bearer ${jsondecode(data.terracurl_request.firefly_login.response).access_token}"
+  }
 
-  destroy_request_body =  ""
-  destroy_response_codes = [200]
+  destroy_request_body =  jsonencode(
+    {
+      "name"= var.name
+    }
+  )
+  destroy_response_codes = [204]
    depends_on = [
     aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_read_permission,
     aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds
