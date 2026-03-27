@@ -96,3 +96,15 @@ OR
 access_key = "YOUR_AWS_ACCESS_KEY"
 secret_key = "YOUR_SECRET_KEY"
 ```
+OR
+```
+aws_assume_role_arn = "YOUR_ROLE_ARN"
+session_name = "YOUR_SESSION_NAME"
+external_id = "YOUR_EXTERNAL_ID"
+```
+OR
+```
+aws_assume_web_identity_role_arn = "YOUR_ROLE_ARN"
+aws_assume_web_identity_role_token = "YOUR_ROLE_TOKEN"
+OR
+aws_assume_web_identity_role_token_file = "YOUR_TOKEN_FILE"
