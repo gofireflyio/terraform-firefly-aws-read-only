@@ -75,31 +75,6 @@ variable "target_event_bus_arn" {
   default = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
 }
 
-variable "profile" {
-  default = ""
-  type    = string
-}
-
-variable "external_id" {
-  default = ""
-  type    = string
-}
-
-variable "access_key" {
-  default = ""
-  type    = string
-}
-
-variable "secret_key" {
-  default = ""
-  type    = string
-}
-
-variable "session_name" {
-  default = "firefly"
-  type    = string
-}
-
 variable "buckets_by_region" {
   type        = map(list(string))
   description = ""
